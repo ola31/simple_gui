@@ -61,6 +61,8 @@ public Q_SLOTS:
     void Start();
     void MD();
     void JOY();
+    void Front_CAM();
+    void Back_CAM();
 
     void All_stop();
 
@@ -71,6 +73,8 @@ public Q_SLOTS:
     void Off_stair();
     void Off_MD();
     void Off_JOY();
+    void Off_Front_CAM();
+    void Off_Back_CAM();
 
     void updateState();
     void getReady();

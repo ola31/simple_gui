@@ -458,8 +458,8 @@
        <widget class="QPushButton" name="Button_md">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>174</y>
+          <x>650</x>
+          <y>30</y>
           <width>89</width>
           <height>51</height>
          </rect>
@@ -471,8 +471,8 @@
        <widget class="QPushButton" name="Off_md">
         <property name="geometry">
          <rect>
-          <x>730</x>
-          <y>240</y>
+          <x>760</x>
+          <y>40</y>
           <width>51</width>
           <height>41</height>
          </rect>
@@ -484,8 +484,8 @@
        <widget class="QLabel" name="state_label_6">
         <property name="geometry">
          <rect>
-          <x>790</x>
-          <y>190</y>
+          <x>820</x>
+          <y>40</y>
           <width>67</width>
           <height>41</height>
          </rect>
@@ -525,6 +525,71 @@
         <property name="pixmap">
          <pixmap>:/images/led-off.png</pixmap>
         </property>
+       </widget>
+       <widget class="QGroupBox" name="camera">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>130</y>
+          <width>211</width>
+          <height>191</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>CAMERA</string>
+        </property>
+        <widget class="QPushButton" name="Button_Front_CAM">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>91</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Front CAM</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Off_Front_CAM">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>50</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Button_Back_CAM">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>110</y>
+           <width>89</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Back CAM</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Off_Back_CAM">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>120</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+        </widget>
        </widget>
       </widget>
      </widget>

@@ -85,6 +85,12 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Off_md, SIGNAL(clicked()), this, SLOT(Off_MD()));
     QObject::connect(ui.Off_Joy, SIGNAL(clicked()), this, SLOT(Off_JOY()));
 
+    QObject::connect(ui.Button_Front_CAM, SIGNAL(clicked()), this, SLOT(Front_CAM()));   //Front CAM
+    QObject::connect(ui.Off_Front_CAM, SIGNAL(clicked()), this, SLOT(Off_Front_CAM()));  //Front CAM OFf
+
+    QObject::connect(ui.Button_Back_CAM, SIGNAL(clicked()), this, SLOT(Back_CAM()));   //Back CAM
+    QObject::connect(ui.Off_Back_CAM, SIGNAL(clicked()), this, SLOT(Off_Back_CAM()));  //Back CAM Off
+
 
 
     /*********************
@@ -282,6 +288,17 @@ void MainWindow::All_stop() {
     ros_status_flag = true;
 }
 
+void MainWindow::Front_CAM()
+{
+  ros_topic_data = 20;
+  ros_status_flag = true;
+}
+
+void MainWindow::Back_CAM(){
+    ros_topic_data = 30;
+    ros_status_flag = true;
+}
+
 /*****************************************************************************
 ** Stop the selected thing
 *****************************************************************************/
@@ -318,6 +335,17 @@ void MainWindow::Off_MD() {     //md_driver
 
 void MainWindow::Off_JOY() {     //md_driver
     ros_topic_data = 71;
+    ros_status_flag = true;
+}
+
+void MainWindow::Off_Front_CAM()
+{
+  ros_topic_data = 21;
+  ros_status_flag = true;
+}
+
+void MainWindow::Off_Back_CAM(){
+    ros_topic_data = 31;
     ros_status_flag = true;
 }
 

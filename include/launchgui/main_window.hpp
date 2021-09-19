@@ -63,6 +63,7 @@ public Q_SLOTS:
     void JOY();
     void Front_CAM();
     void Back_CAM();
+    void Front_and_Back_CAM();
 
     void All_stop();
 
@@ -75,9 +76,11 @@ public Q_SLOTS:
     void Off_JOY();
     void Off_Front_CAM();
     void Off_Back_CAM();
+    void Off_Front_and_Back_CAM();
 
     void updateState();
     void getReady();
+
 
 private:
 	Ui::MainWindowDesign ui;

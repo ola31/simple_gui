@@ -25,6 +25,7 @@ bool ros_status_flag = 0;
 
 extern int State[7];
 extern int Ready;
+extern QImage qt_image;
 
 using namespace Qt;
 
@@ -90,6 +91,9 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 
     QObject::connect(ui.Button_Back_CAM, SIGNAL(clicked()), this, SLOT(Back_CAM()));   //Back CAM
     QObject::connect(ui.Off_Back_CAM, SIGNAL(clicked()), this, SLOT(Off_Back_CAM()));  //Back CAM Off
+
+    QObject::connect(ui.Button_Front_and_Back_CAM, SIGNAL(clicked()), this, SLOT(Front_and_Back_CAM()));   //Back CAM
+    QObject::connect(ui.Off_Front_and_Back_CAM, SIGNAL(clicked()), this, SLOT(Off_Front_and_Back_CAM()));  //Back CAM Off
 
 
 
@@ -220,6 +224,8 @@ void MainWindow::updateState() {
     else{
         ui.state_label_7->setPixmap(m_lightimg[0]);
     }
+    ui.label_7->setPixmap(QPixmap::fromImage(qt_image));
+    ui.label_7->resize(ui.label_7->pixmap()->size());
 
 }
 
@@ -299,6 +305,12 @@ void MainWindow::Back_CAM(){
     ros_status_flag = true;
 }
 
+void MainWindow::Front_and_Back_CAM()
+{
+  ros_topic_data = 40;
+  ros_status_flag = true;
+}
+
 /*****************************************************************************
 ** Stop the selected thing
 *****************************************************************************/
@@ -349,6 +361,11 @@ void MainWindow::Off_Back_CAM(){
     ros_status_flag = true;
 }
 
+void MainWindow::Off_Front_and_Back_CAM()
+{
+  ros_topic_data = 41;
+  ros_status_flag = true;
+}
 
 /*****************************************************************************
 ** Implementation [Menu]

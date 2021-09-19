@@ -33,6 +33,7 @@ namespace launchgui {
 
 int State[7];
 int Ready;
+QImage qt_image;
 
 extern int ros_topic_data;
 extern bool ros_status_flag;
@@ -77,6 +78,7 @@ bool QNode::init() {
         P_state_subscriber = n.subscribe("parking_state", 1000,  &QNode::P_state_Callback, this);
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
+        Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
 	start();
 	return true;
 }
@@ -103,12 +105,13 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         P_state_subscriber = n.subscribe("parking_state", 1000,  &QNode::P_state_Callback, this);
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
+        Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
 	start();
 	return true;
 }
 
 void QNode::run() {
-        ros::Rate loop_rate(10);
+        ros::Rate loop_rate(30);
         ros::NodeHandle n;
 
         get_Ready_subscriber = n.subscribe("getmission_ready", 1000, &QNode::getready_Callback, this);
@@ -120,9 +123,10 @@ void QNode::run() {
         P_state_subscriber = n.subscribe("parking_state", 1000,  &QNode::P_state_Callback, this);
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
+        Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
 
 
-	int count = 0;
+  //int count = 0;
         while ( ros::ok() ) {
             if(ros_status_flag == true) {
                 msg.data = ros_topic_data;
@@ -131,14 +135,14 @@ void QNode::run() {
             }
             blackout(0);
 
-		ros::spinOnce();
-		loop_rate.sleep();
-		++count;
-	}
+            ros::spinOnce();
+            loop_rate.sleep();
+            //++count;
+        }
 
         State[0] = 0;
 
-        ros::spin();
+        //ros::spin();
 	std::cout << "Ros shutdown, proceeding to close the gui." << std::endl;
 	Q_EMIT rosShutdown(); // used to signal the gui for a shutdown (useful to roslaunch)
 }
@@ -193,6 +197,30 @@ void QNode::getready_Callback(const std_msgs::UInt16& ready){
         Q_EMIT statusUpdated();
 }
 
+void QNode::Front_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConstPtr
+  cv_bridge::CvImagePtr cv_ptr;
+  try{
+    cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
+   }
+   catch (cv_bridge::Exception& e){
+     ROS_ERROR("cv_bridge exception: %s", e.what());
+     return;
+   }
+   cv::Mat frame2 = cv_ptr->image;
+   //cv::Mat frame2;
+   //cv::resize(frame,frame2,cv::Size(640, 480),0,0,cv::INTER_CUBIC);
+   //cv::Mat frame3 = cv_ptr->image;
+   //cv::Mat frame4;
+   //cv::cvtColor(frame3, frame4, cv::COLOR_RGB2BGR);
+   //cv::cvShowImage("Received Image", &frame);
+   //cv::imshow("aaaa",frame);
+   int WIDTH = 500;
+   int HEIGHT = 400;
+   qt_image = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
+  //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
+   Q_EMIT statusUpdated();
+
+}
 
 void QNode::log( const LogLevel &level, const std::string &msg) {
 	logging_model.insertRows(logging_model.rowCount(),1);

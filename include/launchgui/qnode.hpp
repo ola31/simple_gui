@@ -25,6 +25,10 @@
 #include <QThread>
 #include <QStringListModel>
 #include <std_msgs/UInt16.h>
+//#include <sensor_msgs/Image.h>
+#include <sensor_msgs/image_encodings.h>
+#include <opencv2/opencv.hpp>
+#include <cv_bridge/cv_bridge.h>
 #endif
 
 
@@ -56,6 +60,7 @@ public:
         void JOY_state_Callback(const std_msgs::UInt16& state_msg);
         void blackout(int a);
         void getready_Callback(const std_msgs::UInt16& ready);
+        void Front_ImageCb(const sensor_msgs::ImageConstPtr& msg);
 
 	/*********************
 	** Logging
@@ -91,6 +96,7 @@ private:
         ros::Subscriber P_state_subscriber;
         ros::Subscriber MD_state_subscriber;
         ros::Subscriber JOY_state_subscriber;
+        ros::Subscriber Front_Image_subscriber;
 
         QStringListModel logging_model;
 };

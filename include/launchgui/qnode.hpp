@@ -61,6 +61,12 @@ public:
         void blackout(int a);
         void getready_Callback(const std_msgs::UInt16& ready);
         void Front_ImageCb(const sensor_msgs::ImageConstPtr& msg);
+        //Arm
+        void Arm_status_Callback(const std_msgs::UInt16& state_msg);
+        void Arm_joy_status_Callback(const std_msgs::UInt16& state_msg);
+        void Arm_key_status_Callback(const std_msgs::UInt16& state_msg);
+        void Arm_service_status_Callback(const std_msgs::UInt16& state_msg);
+
 
 	/*********************
 	** Logging
@@ -97,6 +103,11 @@ private:
         ros::Subscriber MD_state_subscriber;
         ros::Subscriber JOY_state_subscriber;
         ros::Subscriber Front_Image_subscriber;
+
+        ros::Subscriber Arm_status_subscriber;
+        ros::Subscriber Arm_joy_status_subscriber;
+        ros::Subscriber Arm_key_status_subscriber;
+        ros::Subscriber Arm_service_status_subscriber;
 
         QStringListModel logging_model;
 };

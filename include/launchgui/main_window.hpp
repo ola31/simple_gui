@@ -15,6 +15,10 @@
 #include <QtGui/QMainWindow>
 #include "ui_main_window.h"
 #include "qnode.hpp"
+
+#include <stdlib.h>
+#include <string>
+
 /*****************************************************************************
 ** Namespace
 *****************************************************************************/
@@ -64,6 +68,10 @@ public Q_SLOTS:
     void Front_CAM();
     void Back_CAM();
     void Front_and_Back_CAM();
+    void Arm();
+    void Arm_joy();
+    void Arm_key();
+    void Arm_service();
 
     void All_stop();
 
@@ -77,9 +85,16 @@ public Q_SLOTS:
     void Off_Front_CAM();
     void Off_Back_CAM();
     void Off_Front_and_Back_CAM();
+    void Off_Arm();
+    void Off_Arm_joy();
+    void Off_Arm_key();
+    void Off_Arm_service();
 
     void updateState();
     void getReady();
+
+    void Html();
+    void controll_pc_websocket();
 
 
 private:

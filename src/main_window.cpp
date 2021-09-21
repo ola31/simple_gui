@@ -24,6 +24,7 @@ int ros_topic_data;
 bool ros_status_flag = 0;
 
 extern int State[7];
+extern int Arm_State[4];
 extern int Ready;
 extern QImage qt_image;
 
@@ -94,6 +95,21 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 
     QObject::connect(ui.Button_Front_and_Back_CAM, SIGNAL(clicked()), this, SLOT(Front_and_Back_CAM()));   //Back CAM
     QObject::connect(ui.Off_Front_and_Back_CAM, SIGNAL(clicked()), this, SLOT(Off_Front_and_Back_CAM()));  //Back CAM Off
+
+    //ARM
+    QObject::connect(ui.Button_Arm, SIGNAL(clicked()), this, SLOT(Arm()));
+    QObject::connect(ui.Button_Arm_joy, SIGNAL(clicked()), this, SLOT(Arm_joy()));
+    QObject::connect(ui.Button_Arm_key, SIGNAL(clicked()), this, SLOT(Arm_key()));
+    QObject::connect(ui.Button_Arm_service, SIGNAL(clicked()), this, SLOT(Arm_service()));
+
+    QObject::connect(ui.Off_Arm, SIGNAL(clicked()), this, SLOT(Off_Arm()));
+    QObject::connect(ui.OFf_Arm_joy, SIGNAL(clicked()), this, SLOT(Off_Arm_joy()));
+    QObject::connect(ui.Off_Arm_key, SIGNAL(clicked()), this, SLOT(Off_Arm_key()));
+    QObject::connect(ui.Off_Arm_service, SIGNAL(clicked()), this, SLOT(Off_Arm_service()));
+
+    //COMM
+    QObject::connect(ui.Button_html, SIGNAL(clicked()), this, SLOT(Html()));
+    QObject::connect(ui.Button_controll_pc_websocket, SIGNAL(clicked()), this, SLOT(controll_pc_websocket()));
 
 
 
@@ -224,6 +240,36 @@ void MainWindow::updateState() {
     else{
         ui.state_label_7->setPixmap(m_lightimg[0]);
     }
+    //Arm
+    if(Arm_State[0] == 1){
+        ui.state_label_arm->setPixmap(m_lightimg[1]);
+    }
+    else{
+        ui.state_label_arm->setPixmap(m_lightimg[0]);
+    }
+
+    if(Arm_State[1] == 1){
+        ui.status_label_arm_joy->setPixmap(m_lightimg[1]);
+    }
+    else{
+        ui.status_label_arm_joy->setPixmap(m_lightimg[0]);
+    }
+
+    if(Arm_State[2] == 1){
+        ui.status_label_arm_key->setPixmap(m_lightimg[1]);
+    }
+    else{
+        ui.status_label_arm_key->setPixmap(m_lightimg[0]);
+    }
+
+    if(Arm_State[3] == 1){
+        ui.status_label_arm_service->setPixmap(m_lightimg[1]);
+    }
+    else{
+        ui.status_label_arm_service->setPixmap(m_lightimg[0]);
+    }
+
+
     ui.label_7->setPixmap(QPixmap::fromImage(qt_image));
     ui.label_7->resize(ui.label_7->pixmap()->size());
 
@@ -311,6 +357,45 @@ void MainWindow::Front_and_Back_CAM()
   ros_status_flag = true;
 }
 
+void MainWindow::Arm()
+{
+  ros_topic_data = 100;
+  ros_status_flag = true;
+}
+
+void MainWindow::Arm_joy()
+{
+  ros_topic_data = 110;
+  ros_status_flag = true;
+}
+
+void MainWindow::Arm_key()
+{
+  ros_topic_data = 120;
+  ros_status_flag = true;
+}
+
+void MainWindow::Arm_service()
+{
+  ros_topic_data = 130;
+  ros_status_flag = true;
+}
+
+//COMM
+void MainWindow::Html()
+{
+  //ROS_INFO("Html");
+  std::string command_html = "gnome-terminal -- firefox ~/catkin_ws/src/roslibjs/examples/HW_test_server_0810.html";
+  const char *c_html = command_html.c_str();
+  system(c_html);
+}
+void MainWindow::controll_pc_websocket()
+{
+  std::string command_web = "gnome-terminal -- roslaunch rosbridge_server rosbridge_websocket.launch";
+  const char *c_web = command_web.c_str();
+  system(c_web);
+}
+
 /*****************************************************************************
 ** Stop the selected thing
 *****************************************************************************/
@@ -366,6 +451,31 @@ void MainWindow::Off_Front_and_Back_CAM()
   ros_topic_data = 41;
   ros_status_flag = true;
 }
+
+void MainWindow::Off_Arm()
+{
+  ros_topic_data = 101;
+  ros_status_flag = true;
+}
+
+void MainWindow::Off_Arm_joy()
+{
+  ros_topic_data = 111;
+  ros_status_flag = true;
+}
+
+void MainWindow::Off_Arm_key()
+{
+  ros_topic_data = 121;
+  ros_status_flag = true;
+}
+
+void MainWindow::Off_Arm_service()
+{
+  ros_topic_data = 131;
+  ros_status_flag = true;
+}
+
 
 /*****************************************************************************
 ** Implementation [Menu]

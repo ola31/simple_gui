@@ -32,6 +32,7 @@ namespace launchgui {
 *****************************************************************************/
 
 int State[7];
+int Arm_State[4];
 int Ready;
 QImage qt_image;
 
@@ -79,6 +80,11 @@ bool QNode::init() {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        //Arm
+        Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
+        Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
+        Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
+        Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
 	start();
 	return true;
 }
@@ -106,6 +112,12 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        //Arm
+        Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
+        Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
+        Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
+        Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
+
 	start();
 	return true;
 }
@@ -124,6 +136,11 @@ void QNode::run() {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        //Arm
+        Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
+        Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
+        Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
+        Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
 
 
   //int count = 0;
@@ -214,13 +231,32 @@ void QNode::Front_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConstPt
    //cv::cvtColor(frame3, frame4, cv::COLOR_RGB2BGR);
    //cv::cvShowImage("Received Image", &frame);
    //cv::imshow("aaaa",frame);
-   int WIDTH = 500;
-   int HEIGHT = 400;
+   int WIDTH = 512;
+   int HEIGHT = 384;
    qt_image = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
   //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
    Q_EMIT statusUpdated();
 
 }
+
+void QNode::Arm_status_Callback(const std_msgs::UInt16& state_msg){
+    Arm_State[0] = state_msg.data;
+        Q_EMIT statusUpdated();
+}
+void QNode::Arm_joy_status_Callback(const std_msgs::UInt16& state_msg){
+    Arm_State[1] = state_msg.data;
+        Q_EMIT statusUpdated();
+}
+void QNode::Arm_key_status_Callback(const std_msgs::UInt16& state_msg){
+    Arm_State[2] = state_msg.data;
+        Q_EMIT statusUpdated();
+}
+void QNode::Arm_service_status_Callback(const std_msgs::UInt16& state_msg){
+    Arm_State[3] = state_msg.data;
+        Q_EMIT statusUpdated();
+}
+
+
 
 void QNode::log( const LogLevel &level, const std::string &msg) {
 	logging_model.insertRows(logging_model.rowCount(),1);

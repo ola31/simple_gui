@@ -29,6 +29,7 @@
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/opencv.hpp>
 #include <cv_bridge/cv_bridge.h>
+//#include <image_transport/image_transport.h>
 #endif
 
 
@@ -103,6 +104,7 @@ private:
         ros::Subscriber MD_state_subscriber;
         ros::Subscriber JOY_state_subscriber;
         ros::Subscriber Front_Image_subscriber;
+        //image_transport::Subscriber Front_Image_subscriber2;
 
         ros::Subscriber Arm_status_subscriber;
         ros::Subscriber Arm_joy_status_subscriber;

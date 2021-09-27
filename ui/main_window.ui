@@ -708,197 +708,6 @@ CAM</string>
          <string>Front CAM</string>
         </property>
        </widget>
-       <widget class="QGroupBox" name="Arm">
-        <property name="geometry">
-         <rect>
-          <x>700</x>
-          <y>380</y>
-          <width>241</width>
-          <height>231</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="title">
-         <string>Arm</string>
-        </property>
-        <widget class="QPushButton" name="Button_Arm">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>40</y>
-           <width>91</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Arm</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Arm_joy">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>100</y>
-           <width>89</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Arm_joy</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Arm_key">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>140</y>
-           <width>89</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Arm_key</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Arm_service">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>180</y>
-           <width>89</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Arm_service</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="state_label_arm">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>40</y>
-           <width>41</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>../resources/images/led-off.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Arm">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>40</y>
-           <width>71</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="OFf_Arm_joy">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>100</y>
-           <width>71</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Arm_key">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>140</y>
-           <width>71</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Arm_service">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>180</y>
-           <width>71</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="status_label_arm_joy">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>100</y>
-           <width>41</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>../resources/images/led-off.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QLabel" name="status_label_arm_key">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>140</y>
-           <width>31</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>../resources/images/led-off.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QLabel" name="status_label_arm_service">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>180</y>
-           <width>31</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>../resources/images/led-off.png</pixmap>
-         </property>
-        </widget>
-       </widget>
        <widget class="QGroupBox" name="groupBox_3">
         <property name="geometry">
          <rect>
@@ -955,7 +764,7 @@ WebSocket</string>
           <x>690</x>
           <y>380</y>
           <width>251</width>
-          <height>241</height>
+          <height>291</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -964,6 +773,215 @@ WebSocket</string>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
+        <widget class="QGroupBox" name="Arm">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>241</width>
+           <height>271</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="title">
+          <string>Arm</string>
+         </property>
+         <widget class="QPushButton" name="Button_Arm">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>13</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Arm</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Arm_joy">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>140</y>
+            <width>89</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Arm_joy</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Arm_key">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>180</y>
+            <width>89</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Arm_key</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Arm_service">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>220</y>
+            <width>89</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Arm_service</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="state_label_arm">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>80</y>
+            <width>41</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../resources/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Off_Arm">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>80</y>
+            <width>71</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="OFf_Arm_joy">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>140</y>
+            <width>71</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Off_Arm_key">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>180</y>
+            <width>71</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Off_Arm_service">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>220</y>
+            <width>71</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="status_label_arm_joy">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>140</y>
+            <width>41</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../resources/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QLabel" name="status_label_arm_key">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>180</y>
+            <width>31</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../resources/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QLabel" name="status_label_arm_service">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>220</y>
+            <width>31</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../resources/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_NUC2_Connect">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>34</y>
+            <width>121</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>NUC2 Connect</string>
+          </property>
+         </widget>
+        </widget>
        </widget>
        <widget class="QFrame" name="frame_5">
         <property name="geometry">
@@ -998,7 +1016,6 @@ WebSocket</string>
        <zorder>label_7</zorder>
        <zorder>groupBox_2</zorder>
        <zorder>label_8</zorder>
-       <zorder>Arm</zorder>
        <zorder>groupBox_3</zorder>
       </widget>
      </widget>

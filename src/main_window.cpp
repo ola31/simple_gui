@@ -96,6 +96,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_Front_and_Back_CAM, SIGNAL(clicked()), this, SLOT(Front_and_Back_CAM()));   //Back CAM
     QObject::connect(ui.Off_Front_and_Back_CAM, SIGNAL(clicked()), this, SLOT(Off_Front_and_Back_CAM()));  //Back CAM Off
 
+    //Sub_Pub_again(nuc2_connect)
+    QObject::connect(ui.Button_NUC2_Connect, SIGNAL(clicked()), this, SLOT(nuc2_conncet()));
     //ARM
     QObject::connect(ui.Button_Arm, SIGNAL(clicked()), this, SLOT(Arm()));
     QObject::connect(ui.Button_Arm_joy, SIGNAL(clicked()), this, SLOT(Arm_joy()));
@@ -357,6 +359,13 @@ void MainWindow::Front_and_Back_CAM()
   ros_status_flag = true;
 }
 
+//Sub_Pub again(nuc2 conncet)
+void MainWindow::nuc2_conncet()
+{
+  ros_topic_data = 99;
+  ros_status_flag = true;
+}
+
 void MainWindow::Arm()
 {
   ros_topic_data = 100;
@@ -381,11 +390,12 @@ void MainWindow::Arm_service()
   ros_status_flag = true;
 }
 
+
 //COMM
 void MainWindow::Html()
 {
   //ROS_INFO("Html");
-  std::string command_html = "gnome-terminal -- firefox ~/catkin_ws/src/roslibjs/examples/HW_test_server_0810.html";
+  std::string command_html = "gnome-terminal -- firefox ~/catkin_ws/src/roslibjs/examples/HW_test_server_0927.html";
   const char *c_html = command_html.c_str();
   system(c_html);
 }

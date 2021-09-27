@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="launchgui" type="launchgui" name="launchgui"/>
+    <node pkg="image_transport" type="republish" name="republish" args="compressed in:=/main_camera/image_raw out:=/usb_cam/image_raw"/>
+</launch>

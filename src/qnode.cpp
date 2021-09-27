@@ -125,6 +125,7 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 void QNode::run() {
         ros::Rate loop_rate(30);
         ros::NodeHandle n;
+        //image_transport::ImageTransport it(n);
 
         get_Ready_subscriber = n.subscribe("getmission_ready", 1000, &QNode::getready_Callback, this);
 
@@ -136,6 +137,8 @@ void QNode::run() {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        //Front_Image_subscriber2 = it.subscribe("/image_raw/compressed",1000,&QNode::Front_ImageCb,image_transport::TransportHints("compressed"),this);
+
         //Arm
         Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);

@@ -68,6 +68,8 @@ public Q_SLOTS:
     void Front_CAM();
     void Back_CAM();
     void Front_and_Back_CAM();
+
+    void nuc2_conncet();
     void Arm();
     void Arm_joy();
     void Arm_key();

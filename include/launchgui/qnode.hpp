@@ -62,6 +62,8 @@ public:
         void blackout(int a);
         void getready_Callback(const std_msgs::UInt16& ready);
         void Front_ImageCb(const sensor_msgs::ImageConstPtr& msg);
+        void Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg);
+
         //Arm
         void Arm_status_Callback(const std_msgs::UInt16& state_msg);
         void Arm_joy_status_Callback(const std_msgs::UInt16& state_msg);
@@ -104,6 +106,7 @@ private:
         ros::Subscriber MD_state_subscriber;
         ros::Subscriber JOY_state_subscriber;
         ros::Subscriber Front_Image_subscriber;
+        ros::Subscriber Gripper_Image_subscriber;
         //image_transport::Subscriber Front_Image_subscriber2;
 
         ros::Subscriber Arm_status_subscriber;

@@ -27,6 +27,7 @@ extern int State[7];
 extern int Arm_State[4];
 extern int Ready;
 extern QImage qt_image;
+extern QImage qt_image_gripper;
 
 using namespace Qt;
 
@@ -112,6 +113,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     //COMM
     QObject::connect(ui.Button_html, SIGNAL(clicked()), this, SLOT(Html()));
     QObject::connect(ui.Button_controll_pc_websocket, SIGNAL(clicked()), this, SLOT(controll_pc_websocket()));
+    QObject::connect(ui.Button_Edit_html, SIGNAL(clicked()), this, SLOT(Edit_html()));
 
 
 
@@ -275,6 +277,9 @@ void MainWindow::updateState() {
     ui.label_7->setPixmap(QPixmap::fromImage(qt_image));
     ui.label_7->resize(ui.label_7->pixmap()->size());
 
+    ui.label_9->setPixmap(QPixmap::fromImage(qt_image_gripper));
+    ui.label_9->resize(ui.label_9->pixmap()->size());
+
 }
 
 void MainWindow::getReady() {
@@ -404,6 +409,13 @@ void MainWindow::controll_pc_websocket()
   std::string command_web = "gnome-terminal -- roslaunch rosbridge_server rosbridge_websocket.launch";
   const char *c_web = command_web.c_str();
   system(c_web);
+}
+
+void MainWindow::Edit_html()
+{
+  std::string command_edit = "gedit ~/catkin_ws/src/roslibjs/examples/HW_test_server_0927.html";
+  const char *c_edit = command_edit.c_str();
+  system(c_edit);
 }
 
 /*****************************************************************************

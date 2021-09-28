@@ -35,6 +35,7 @@ int State[7];
 int Arm_State[4];
 int Ready;
 QImage qt_image;
+QImage qt_image_gripper;
 
 extern int ros_topic_data;
 extern bool ros_status_flag;
@@ -80,6 +81,7 @@ bool QNode::init() {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Arm
         Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
@@ -112,6 +114,7 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Arm
         Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
@@ -137,6 +140,7 @@ void QNode::run() {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Front_Image_subscriber2 = it.subscribe("/image_raw/compressed",1000,&QNode::Front_ImageCb,image_transport::TransportHints("compressed"),this);
 
         //Arm
@@ -234,9 +238,34 @@ void QNode::Front_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConstPt
    //cv::cvtColor(frame3, frame4, cv::COLOR_RGB2BGR);
    //cv::cvShowImage("Received Image", &frame);
    //cv::imshow("aaaa",frame);
-   int WIDTH = 512;
-   int HEIGHT = 384;
+   int WIDTH = 320*(1.8);
+   int HEIGHT = 240*(1.8);
    qt_image = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
+  //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
+   Q_EMIT statusUpdated();
+
+}
+
+void QNode::Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConstPtr
+  cv_bridge::CvImagePtr cv_ptr;
+  try{
+    cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
+   }
+   catch (cv_bridge::Exception& e){
+     ROS_ERROR("cv_bridge exception: %s", e.what());
+     return;
+   }
+   cv::Mat frame2 = cv_ptr->image;
+   //cv::Mat frame2;
+   //cv::resize(frame,frame2,cv::Size(640, 480),0,0,cv::INTER_CUBIC);
+   //cv::Mat frame3 = cv_ptr->image;
+   //cv::Mat frame4;
+   //cv::cvtColor(frame3, frame4, cv::COLOR_RGB2BGR);
+   //cv::cvShowImage("Received Image", &frame);
+   //cv::imshow("aaaa",frame);
+   int WIDTH = 320*(1.8);
+   int HEIGHT = 180*(1.8);
+   qt_image_gripper = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
   //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
    Q_EMIT statusUpdated();
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1812</width>
-    <height>865</height>
+    <height>952</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -482,7 +482,7 @@ CAM</string>
           <x>10</x>
           <y>40</y>
           <width>641</width>
-          <height>401</height>
+          <height>431</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -707,56 +707,6 @@ CAM</string>
         <property name="text">
          <string>Front CAM</string>
         </property>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_3">
-        <property name="geometry">
-         <rect>
-          <x>1040</x>
-          <y>580</y>
-          <width>231</width>
-          <height>91</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>COMM</string>
-        </property>
-        <widget class="QPushButton" name="Button_html">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>30</y>
-           <width>81</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>15</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>HTML</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_controll_pc_websocket">
-         <property name="geometry">
-          <rect>
-           <x>108</x>
-           <y>30</y>
-           <width>111</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Controll_pc
-WebSocket</string>
-         </property>
-        </widget>
        </widget>
        <widget class="QFrame" name="frame_4">
         <property name="geometry">
@@ -986,9 +936,9 @@ WebSocket</string>
        <widget class="QFrame" name="frame_5">
         <property name="geometry">
          <rect>
-          <x>1039</x>
-          <y>579</y>
-          <width>231</width>
+          <x>1030</x>
+          <y>580</y>
+          <width>311</width>
           <height>91</height>
          </rect>
         </property>
@@ -997,6 +947,104 @@ WebSocket</string>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>311</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>COMM</string>
+         </property>
+         <widget class="QPushButton" name="Button_html">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>81</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>HTML</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_controll_pc_websocket">
+          <property name="geometry">
+           <rect>
+            <x>108</x>
+            <y>30</y>
+            <width>111</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>13</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Controll_pc
+WebSocket</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Edit_html">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>40</y>
+            <width>41</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Edit 
+ html</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>520</y>
+          <width>641</width>
+          <height>291</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>490</y>
+          <width>131</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Gripper_CAM</string>
         </property>
        </widget>
        <zorder>frame_5</zorder>
@@ -1016,7 +1064,8 @@ WebSocket</string>
        <zorder>label_7</zorder>
        <zorder>groupBox_2</zorder>
        <zorder>label_8</zorder>
-       <zorder>groupBox_3</zorder>
+       <zorder>label_9</zorder>
+       <zorder>label_10</zorder>
       </widget>
      </widget>
     </item>

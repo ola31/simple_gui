@@ -97,6 +97,7 @@ public Q_SLOTS:
 
     void Html();
     void controll_pc_websocket();
+    void Edit_html();
 
 
 private:

@@ -24,6 +24,7 @@
 *****************************************************************************/
 
 
+QImage qt_image_screenshot; //add
 
 namespace launchgui {
 
@@ -36,6 +37,7 @@ int Arm_State[4];
 int Ready;
 QImage qt_image;
 QImage qt_image_gripper;
+//QImage qt_image_screenshot; //add
 
 extern int ros_topic_data;
 extern bool ros_status_flag;
@@ -87,6 +89,8 @@ bool QNode::init() {
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
         Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
+        screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
+        //screenshot
 	start();
 	return true;
 }
@@ -120,6 +124,8 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
         Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
+        //screenshot
+        screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
 
 	start();
 	return true;
@@ -148,7 +154,8 @@ void QNode::run() {
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
         Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
-
+        //screenshot
+        screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
 
   //int count = 0;
         while ( ros::ok() ) {
@@ -267,7 +274,7 @@ void QNode::Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConst
    int HEIGHT = 180*(1.8);
    qt_image_gripper = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
   //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
-   Q_EMIT statusUpdated();
+   Q_EMIT statusUpdated_sc();
 
 }
 
@@ -286,6 +293,30 @@ void QNode::Arm_key_status_Callback(const std_msgs::UInt16& state_msg){
 void QNode::Arm_service_status_Callback(const std_msgs::UInt16& state_msg){
     Arm_State[3] = state_msg.data;
         Q_EMIT statusUpdated();
+}
+
+void QNode::screenshot_Callback(const sensor_msgs::Image& msg){
+  cv_bridge::CvImagePtr cv_ptr;
+  try{
+    cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
+   }
+   catch (cv_bridge::Exception& e){
+     ROS_ERROR("cv_bridge exception: %s", e.what());
+     return;
+   }
+   cv::Mat frame2 = cv_ptr->image;
+   //cv::Mat frame2;
+   //cv::resize(frame,frame2,cv::Size(640, 480),0,0,cv::INTER_CUBIC);
+   //cv::Mat frame3 = cv_ptr->image;
+   //cv::Mat frame4;
+   //cv::cvtColor(frame3, frame4, cv::COLOR_RGB2BGR);
+   //cv::cvShowImage("Received Image", &frame);
+   //cv::imshow("aaaa",frame);
+   int WIDTH = 320*(3);
+   int HEIGHT = 180*(3);
+   qt_image_screenshot = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
+  //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
+   Q_EMIT statusUpdated_sc();
 }
 
 

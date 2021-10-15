@@ -15,6 +15,7 @@
 #include <QtGui/QMainWindow>
 #include "ui_main_window.h"
 #include "qnode.hpp"
+#include "sc_dialog.hpp" //add
 
 #include <stdlib.h>
 #include <string>
@@ -93,20 +94,21 @@ public Q_SLOTS:
     void Off_Arm_service();
 
     void updateState();
+    void updateState_sc();//add
+
     void getReady();
 
     void Html();
     void controll_pc_websocket();
     void Edit_html();
 
-    void NUC1_screenshot_pressed();
-    void NUC1_screenshot_released();
-    void NUC2_screenshot_pressed();
-    void NUC2_screenshot_released();
+    void NUC1_screenshot_clicked(bool checked);
+    void NUC2_screenshot_clicked(bool checked);
 
 
 private:
 	Ui::MainWindowDesign ui;
+  Sc_Dialog *dialog; //add
 	QNode qnode;
         QPixmap m_lightimg[2];
         QPixmap m_readyimg[2];

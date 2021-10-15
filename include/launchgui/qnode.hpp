@@ -69,6 +69,7 @@ public:
         void Arm_joy_status_Callback(const std_msgs::UInt16& state_msg);
         void Arm_key_status_Callback(const std_msgs::UInt16& state_msg);
         void Arm_service_status_Callback(const std_msgs::UInt16& state_msg);
+        void screenshot_Callback(const sensor_msgs::Image& msg);
 
 
 	/*********************
@@ -90,6 +91,7 @@ Q_SIGNALS:
     void rosShutdown();
 
     void statusUpdated();
+    void statusUpdated_sc(); //add
 
 private:
 	int init_argc;
@@ -113,6 +115,7 @@ private:
         ros::Subscriber Arm_joy_status_subscriber;
         ros::Subscriber Arm_key_status_subscriber;
         ros::Subscriber Arm_service_status_subscriber;
+        ros::Subscriber screenshot_subscriber;
 
         QStringListModel logging_model;
 };

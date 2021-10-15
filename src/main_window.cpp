@@ -30,6 +30,7 @@ extern QImage qt_image;
 extern QImage qt_image_gripper;
 
 using namespace Qt;
+//using namespace Ui;
 
 /*****************************************************************************
 ** Implementation [MainWindow]
@@ -41,6 +42,12 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 {
 
 	ui.setupUi(this); // Calling this incidentally connects all ui's triggers to on_...() callbacks in this class.
+  ui.Button_nuc1_screenshot->setCheckable(true);
+
+  dialog = new Sc_Dialog; //add
+  //dialog->setModal(true); //add
+  //dialog->show();//add
+
     QObject::connect(ui.actionAbout_Qt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt())); // qApp is a global variable for the application
 
     ReadSettings();
@@ -62,6 +69,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     }
 
     QObject::connect(&qnode, SIGNAL(statusUpdated()), this, SLOT(updateState()));
+    QObject::connect(&qnode, SIGNAL(statusUpdated_sc()), this, SLOT(updateState_sc())); //add
     QObject::connect(&qnode, SIGNAL(statusUpdated()), this, SLOT(getReady()));
 
     //QObject::connect(ui.Button_getmission, SIGNAL(clicked()), this, SLOT(launch_getmission()));
@@ -116,10 +124,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_Edit_html, SIGNAL(clicked()), this, SLOT(Edit_html()));
 
     //Screenshot
-    QObject::connect(ui.Button_nuc1_screenshot, SIGNAL(pressed()), this, SLOT(NUC1_screenshot()));
-    QObject::connect(ui.Button_nuc1_screenshot, SIGNAL(released()), this, SLOT(NUC1_screenshot()));
-    QObject::connect(ui.Button_nuc2_screenshot, SIGNAL(clicked()), this, SLOT(NUC2_screenshot()));
-    QObject::connect(ui.Button_nuc2_screenshot, SIGNAL(released()), this, SLOT(NUC2_screenshot()));
+    QObject::connect(ui.Button_nuc1_screenshot, SIGNAL(clicked(bool)), this, SLOT(NUC1_screenshot_clicked(bool)));
+    QObject::connect(ui.Button_nuc2_screenshot, SIGNAL(clicked(bool)), this, SLOT(NUC2_screenshot_clicked(bool)));
 
 
 
@@ -289,6 +295,12 @@ void MainWindow::updateState() {
 
 }
 
+void MainWindow::updateState_sc(){
+    dialog->setWindowTitle("NUC1 Screen");
+    dialog->show();//add
+    dialog->show_screenshot();//add
+}
+
 void MainWindow::getReady() {
     if(Ready == 1){
         ui.get_ready->setPixmap(m_readyimg[1]);
@@ -426,28 +438,24 @@ void MainWindow::Edit_html()
 }
 
 //Screenshot
-void MainWindow::NUC1_screenshot_pressed()
+void MainWindow::NUC1_screenshot_clicked(bool checked)
 {
-  ros_topic_data = 1000;
-  ros_status_flag = true;
-}
-void MainWindow::NUC1_screenshot_released()
-{
-  ros_topic_data = 1000;
-  ros_status_flag = true;
+  if(checked == true){
+    ros_topic_data = 1000;
+    ros_status_flag = true;
+    //dialog->show();//add
+  }
+  else{
+    dialog->close();//add
+  }
+
 }
 
-void MainWindow::NUC2_screenshot_pressed()
+void MainWindow::NUC2_screenshot_clicked(bool checked)
 {
   ros_topic_data = 2000;
   ros_status_flag = true;
 }
-void MainWindow::NUC2_screenshot_released()
-{
-  ros_topic_data = 2000;
-  ros_status_flag = true;
-}
-
 
 /*****************************************************************************
 ** Stop the selected thing

@@ -115,6 +115,13 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_controll_pc_websocket, SIGNAL(clicked()), this, SLOT(controll_pc_websocket()));
     QObject::connect(ui.Button_Edit_html, SIGNAL(clicked()), this, SLOT(Edit_html()));
 
+    //Screenshot
+    QObject::connect(ui.Button_nuc1_screenshot, SIGNAL(pressed()), this, SLOT(NUC1_screenshot()));
+    QObject::connect(ui.Button_nuc1_screenshot, SIGNAL(released()), this, SLOT(NUC1_screenshot()));
+    QObject::connect(ui.Button_nuc2_screenshot, SIGNAL(clicked()), this, SLOT(NUC2_screenshot()));
+    QObject::connect(ui.Button_nuc2_screenshot, SIGNAL(released()), this, SLOT(NUC2_screenshot()));
+
+
 
 
     /*********************
@@ -417,6 +424,30 @@ void MainWindow::Edit_html()
   const char *c_edit = command_edit.c_str();
   system(c_edit);
 }
+
+//Screenshot
+void MainWindow::NUC1_screenshot_pressed()
+{
+  ros_topic_data = 1000;
+  ros_status_flag = true;
+}
+void MainWindow::NUC1_screenshot_released()
+{
+  ros_topic_data = 1000;
+  ros_status_flag = true;
+}
+
+void MainWindow::NUC2_screenshot_pressed()
+{
+  ros_topic_data = 2000;
+  ros_status_flag = true;
+}
+void MainWindow::NUC2_screenshot_released()
+{
+  ros_topic_data = 2000;
+  ros_status_flag = true;
+}
+
 
 /*****************************************************************************
 ** Stop the selected thing

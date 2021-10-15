@@ -99,6 +99,11 @@ public Q_SLOTS:
     void controll_pc_websocket();
     void Edit_html();
 
+    void NUC1_screenshot_pressed();
+    void NUC1_screenshot_released();
+    void NUC2_screenshot_pressed();
+    void NUC2_screenshot_released();
+
 
 private:
 	Ui::MainWindowDesign ui;

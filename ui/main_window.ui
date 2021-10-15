@@ -1047,6 +1047,45 @@ WebSocket</string>
          <string>Gripper_CAM</string>
         </property>
        </widget>
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>690</y>
+          <width>171</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>NUC Screenshot</string>
+        </property>
+        <widget class="QPushButton" name="Button_nuc1_screenshot">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>71</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>NUC1</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Button_nuc2_screenshot">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>30</y>
+           <width>71</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>NUC2</string>
+         </property>
+        </widget>
+       </widget>
        <zorder>frame_5</zorder>
        <zorder>frame_4</zorder>
        <zorder>frame_3</zorder>
@@ -1066,6 +1105,7 @@ WebSocket</string>
        <zorder>label_8</zorder>
        <zorder>label_9</zorder>
        <zorder>label_10</zorder>
+       <zorder>groupBox_4</zorder>
       </widget>
      </widget>
     </item>

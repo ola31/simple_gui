@@ -238,8 +238,8 @@ void QNode::Front_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConstPt
    //cv::cvtColor(frame3, frame4, cv::COLOR_RGB2BGR);
    //cv::cvShowImage("Received Image", &frame);
    //cv::imshow("aaaa",frame);
-   int WIDTH = 320*(1.8);
-   int HEIGHT = 240*(1.8);
+   int WIDTH = 320*(2);
+   int HEIGHT = 180*(2);
    qt_image = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
   //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
    Q_EMIT statusUpdated();

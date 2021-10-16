@@ -140,6 +140,17 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
    m_readyimg[0].load(":/images/switch2.jpg");
    m_readyimg[1].load(":/images/switch1.jpg");
 
+   KUDOS_img.load(":/images/KUDOS2.png");
+
+
+   cat1_img.load(":/images/cat1.jpg");
+   cat2_img.load(":/images/cat2.jpg");
+
+   ui.label_7->setPixmap(cat1_img);
+   ui.label_9->setPixmap(cat2_img);
+   ui.label_11->setPixmap(KUDOS_img);
+
+
 
 }
 
@@ -296,7 +307,7 @@ void MainWindow::updateState() {
 }
 
 void MainWindow::updateState_sc(){
-    dialog->setWindowTitle("NUC1 Screen");
+    dialog->setWindowTitle("NUC Screen");
     dialog->show();//add
     dialog->show_screenshot();//add
 }
@@ -453,8 +464,14 @@ void MainWindow::NUC1_screenshot_clicked(bool checked)
 
 void MainWindow::NUC2_screenshot_clicked(bool checked)
 {
-  ros_topic_data = 2000;
-  ros_status_flag = true;
+  if(checked == true){
+    ros_topic_data = 2000;
+    ros_status_flag = true;
+    //dialog->show();//add
+  }
+  else{
+    dialog->close();//add
+  }
 }
 
 /*****************************************************************************

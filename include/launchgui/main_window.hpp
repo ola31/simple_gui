@@ -113,6 +113,10 @@ private:
         QPixmap m_lightimg[2];
         QPixmap m_readyimg[2];
 
+        QPixmap KUDOS_img;
+        QPixmap cat1_img;
+        QPixmap cat2_img;
+
 };
 
 }  // namespace launchgui

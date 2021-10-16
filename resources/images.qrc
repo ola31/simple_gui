@@ -5,5 +5,9 @@
 	<file>images/led-on.png</file>
         <file>images/switch1.jpg</file>
         <file>images/switch2.jpg</file>
+        <file>images/KUDOS1.png</file>
+        <file>images/KUDOS2.png</file>
+        <file>images/cat1.jpg</file>
+        <file>images/cat2.jpg</file>
     </qresource>
 </RCC>

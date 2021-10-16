@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1812</width>
-    <height>952</height>
+    <height>994</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,262 +40,6 @@
        <attribute name="title">
         <string>Ros Communications</string>
        </attribute>
-       <widget class="QGroupBox" name="Mission">
-        <property name="geometry">
-         <rect>
-          <x>700</x>
-          <y>80</y>
-          <width>451</width>
-          <height>251</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="title">
-         <string>Mission</string>
-        </property>
-        <property name="flat">
-         <bool>false</bool>
-        </property>
-        <widget class="QPushButton" name="Button_AutoDriving">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>30</y>
-           <width>111</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Auto Driving</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Stair">
-         <property name="geometry">
-          <rect>
-           <x>250</x>
-           <y>100</y>
-           <width>91</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Stair</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Parking">
-         <property name="geometry">
-          <rect>
-           <x>250</x>
-           <y>30</y>
-           <width>91</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Parking</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Obstacle">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>170</y>
-           <width>111</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Obstacle</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Door">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>100</y>
-           <width>111</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Open Door</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="state_label_1">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>40</y>
-           <width>31</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>:/images/led-off.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QLabel" name="state_label_2">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>110</y>
-           <width>67</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>:/images/led-off.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QLabel" name="state_label_3">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>180</y>
-           <width>67</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>:/images/led-off.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QLabel" name="state_label_4">
-         <property name="geometry">
-          <rect>
-           <x>350</x>
-           <y>40</y>
-           <width>67</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>:/images/led-off.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QLabel" name="state_label_5">
-         <property name="geometry">
-          <rect>
-           <x>350</x>
-           <y>110</y>
-           <width>67</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>:/images/led-off.png</pixmap>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_AutoDriving">
-         <property name="geometry">
-          <rect>
-           <x>180</x>
-           <y>40</y>
-           <width>51</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Door">
-         <property name="geometry">
-          <rect>
-           <x>180</x>
-           <y>110</y>
-           <width>51</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Obstacle">
-         <property name="geometry">
-          <rect>
-           <x>180</x>
-           <y>180</y>
-           <width>51</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Stair">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>110</y>
-           <width>51</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Parking">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>40</y>
-           <width>51</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-       </widget>
        <widget class="QPushButton" name="Button_getmission">
         <property name="geometry">
          <rect>
@@ -424,98 +168,6 @@
          <pixmap>:/images/led-off.png</pixmap>
         </property>
        </widget>
-       <widget class="QGroupBox" name="camera">
-        <property name="geometry">
-         <rect>
-          <x>1180</x>
-          <y>80</y>
-          <width>211</width>
-          <height>241</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>CAMERA</string>
-        </property>
-        <widget class="QPushButton" name="Button_Front_CAM">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>40</y>
-           <width>101</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Front CAM</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Front_CAM">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>50</y>
-           <width>51</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Back_CAM">
-         <property name="geometry">
-          <rect>
-           <x>8</x>
-           <y>110</y>
-           <width>101</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Back CAM</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Back_CAM">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>120</y>
-           <width>51</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Button_Front_and_Back_CAM">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>180</y>
-           <width>101</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Front &amp;&amp; Back 
-CAM</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="Off_Front_and_Back_CAM">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>190</y>
-           <width>51</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Off</string>
-         </property>
-        </widget>
-       </widget>
        <widget class="QLabel" name="label_7">
         <property name="geometry">
          <rect>
@@ -539,7 +191,7 @@ CAM</string>
         <property name="geometry">
          <rect>
           <x>1030</x>
-          <y>400</y>
+          <y>380</y>
           <width>361</width>
           <height>151</height>
          </rect>
@@ -667,7 +319,7 @@ CAM</string>
          <rect>
           <x>689</x>
           <y>79</y>
-          <width>461</width>
+          <width>451</width>
           <height>291</height>
          </rect>
         </property>
@@ -713,13 +365,269 @@ CAM</string>
           <string>■</string>
          </property>
         </widget>
+        <widget class="QGroupBox" name="Mission">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>451</width>
+           <height>251</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="title">
+          <string>Mission</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <widget class="QPushButton" name="Button_AutoDriving">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>111</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Auto Driving</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Stair">
+          <property name="geometry">
+           <rect>
+            <x>250</x>
+            <y>100</y>
+            <width>91</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Stair</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Parking">
+          <property name="geometry">
+           <rect>
+            <x>250</x>
+            <y>30</y>
+            <width>91</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Parking</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Obstacle">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>170</y>
+            <width>111</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Obstacle</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Door">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>100</y>
+            <width>111</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Open Door</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="state_label_1">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>40</y>
+            <width>31</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>:/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QLabel" name="state_label_2">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>110</y>
+            <width>67</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>:/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QLabel" name="state_label_3">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>180</y>
+            <width>67</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>:/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QLabel" name="state_label_4">
+          <property name="geometry">
+           <rect>
+            <x>350</x>
+            <y>40</y>
+            <width>67</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>:/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QLabel" name="state_label_5">
+          <property name="geometry">
+           <rect>
+            <x>350</x>
+            <y>110</y>
+            <width>67</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>:/images/led-off.png</pixmap>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Off_AutoDriving">
+          <property name="geometry">
+           <rect>
+            <x>180</x>
+            <y>40</y>
+            <width>51</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Off_Door">
+          <property name="geometry">
+           <rect>
+            <x>180</x>
+            <y>110</y>
+            <width>51</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Off_Obstacle">
+          <property name="geometry">
+           <rect>
+            <x>180</x>
+            <y>180</y>
+            <width>51</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Off_Stair">
+          <property name="geometry">
+           <rect>
+            <x>390</x>
+            <y>110</y>
+            <width>51</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Off_Parking">
+          <property name="geometry">
+           <rect>
+            <x>390</x>
+            <y>40</y>
+            <width>51</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Off</string>
+          </property>
+         </widget>
+        </widget>
        </widget>
        <widget class="QFrame" name="frame_3">
         <property name="geometry">
          <rect>
           <x>1170</x>
           <y>79</y>
-          <width>231</width>
+          <width>211</width>
           <height>291</height>
          </rect>
         </property>
@@ -753,8 +661,8 @@ CAM</string>
          <rect>
           <x>690</x>
           <y>380</y>
-          <width>251</width>
-          <height>291</height>
+          <width>231</width>
+          <height>271</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -767,8 +675,8 @@ CAM</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>10</y>
-           <width>241</width>
+           <y>0</y>
+           <width>231</width>
            <height>271</height>
           </rect>
          </property>
@@ -1059,7 +967,7 @@ WebSocket</string>
           <x>10</x>
           <y>520</y>
           <width>641</width>
-          <height>291</height>
+          <height>371</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -1087,72 +995,195 @@ WebSocket</string>
          <string>Gripper_CAM</string>
         </property>
        </widget>
-       <widget class="QGroupBox" name="groupBox_4">
+       <widget class="QFrame" name="frame_6">
         <property name="geometry">
          <rect>
           <x>690</x>
-          <y>690</y>
+          <y>700</y>
           <width>171</width>
           <height>71</height>
          </rect>
         </property>
-        <property name="title">
-         <string>NUC Screenshot</string>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
-        <widget class="QPushButton" name="Button_nuc1_screenshot">
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>171</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>NUC Screenshot</string>
+         </property>
+         <widget class="QPushButton" name="Button_nuc1_screenshot">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>71</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+            <stylestrategy>PreferDefault</stylestrategy>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>NUC1</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_nuc2_screenshot">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>30</y>
+            <width>71</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>NUC2</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="camera">
+        <property name="geometry">
+         <rect>
+          <x>1170</x>
+          <y>100</y>
+          <width>211</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>CAMERA</string>
+        </property>
+        <widget class="QPushButton" name="Button_Front_CAM">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>30</y>
-           <width>71</width>
-           <height>31</height>
+           <y>40</y>
+           <width>101</width>
+           <height>51</height>
           </rect>
          </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <italic>false</italic>
-           <bold>true</bold>
-           <strikeout>false</strikeout>
-           <stylestrategy>PreferDefault</stylestrategy>
-           <kerning>true</kerning>
-          </font>
-         </property>
          <property name="text">
-          <string>NUC1</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
+          <string>Front CAM</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="Button_nuc2_screenshot">
+        <widget class="QPushButton" name="Off_Front_CAM">
          <property name="geometry">
           <rect>
-           <x>90</x>
-           <y>30</y>
-           <width>71</width>
+           <x>130</x>
+           <y>50</y>
+           <width>51</width>
            <height>31</height>
           </rect>
          </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
          <property name="text">
-          <string>NUC2</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
+          <string>Off</string>
          </property>
         </widget>
+        <widget class="QPushButton" name="Button_Back_CAM">
+         <property name="geometry">
+          <rect>
+           <x>8</x>
+           <y>110</y>
+           <width>101</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Back CAM</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Off_Back_CAM">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>120</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Button_Front_and_Back_CAM">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>180</y>
+           <width>101</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Front &amp;&amp; Back 
+CAM</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Off_Front_and_Back_CAM">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>190</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>1030</x>
+          <y>730</y>
+          <width>361</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../resources/images/KUDOS2.png</pixmap>
+        </property>
        </widget>
        <zorder>frame_5</zorder>
        <zorder>frame_4</zorder>
        <zorder>frame_3</zorder>
        <zorder>frame_2</zorder>
-       <zorder>Mission</zorder>
        <zorder>Button_getmission</zorder>
        <zorder>Button_Joy</zorder>
        <zorder>get_ready</zorder>
@@ -1161,13 +1192,14 @@ WebSocket</string>
        <zorder>state_label_6</zorder>
        <zorder>Off_Joy</zorder>
        <zorder>state_label_7</zorder>
-       <zorder>camera</zorder>
        <zorder>label_7</zorder>
        <zorder>groupBox_2</zorder>
        <zorder>label_8</zorder>
        <zorder>label_9</zorder>
        <zorder>label_10</zorder>
-       <zorder>groupBox_4</zorder>
+       <zorder>frame_6</zorder>
+       <zorder>camera</zorder>
+       <zorder>label_11</zorder>
       </widget>
      </widget>
     </item>

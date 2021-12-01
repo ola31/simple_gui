@@ -97,6 +97,7 @@ private:
 	int init_argc;
 	char** init_argv;
         ros::Publisher mission_publisher;
+        ros::Publisher command_publisher;
 
         ros::Subscriber get_Ready_subscriber;
 

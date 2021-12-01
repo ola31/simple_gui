@@ -104,6 +104,7 @@ public Q_SLOTS:
 
     void NUC1_screenshot_clicked(bool checked);
     void NUC2_screenshot_clicked(bool checked);
+    void Button_Cmd_go_clicked();
 
 
 private:
@@ -116,6 +117,7 @@ private:
         QPixmap KUDOS_img;
         QPixmap cat1_img;
         QPixmap cat2_img;
+  QLineEdit qline;
 
 };
 

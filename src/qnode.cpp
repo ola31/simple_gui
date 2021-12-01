@@ -41,8 +41,11 @@ QImage qt_image_gripper;
 
 extern int ros_topic_data;
 extern bool ros_status_flag;
+extern bool ros_status_flag_cmd;
+extern QString q_command_string;
 
 std_msgs::UInt16 msg;
+std_msgs::String cmd_msg;
 
 std_msgs::UInt16 Autodriving_state;
 std_msgs::UInt16 Door_state;
@@ -72,6 +75,8 @@ bool QNode::init() {
 	ros::NodeHandle n;
 	// Add your ros communications here.
         mission_publisher = n.advertise<std_msgs::UInt16>("mission", 1);
+        command_publisher = n.advertise<std_msgs::String>("gui_terminal_command", 1);
+
 
         get_Ready_subscriber = n.subscribe("getmission_ready", 1000, &QNode::getready_Callback, this);
 
@@ -107,6 +112,8 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 	ros::NodeHandle n;
 	// Add your ros communications here.
         mission_publisher = n.advertise<std_msgs::UInt16>("mission", 1);
+        command_publisher = n.advertise<std_msgs::String>("gui_terminal_command", 1);
+
 
         get_Ready_subscriber = n.subscribe("getmission_ready", 1000, &QNode::getready_Callback, this);
 
@@ -163,6 +170,12 @@ void QNode::run() {
                 msg.data = ros_topic_data;
                 mission_publisher.publish(msg);
                 ros_status_flag = false;
+            }
+            if(ros_status_flag_cmd == true){
+              cmd_msg.data = q_command_string.toStdString();
+              command_publisher.publish(cmd_msg);
+              ros_status_flag_cmd = false;
+
             }
             blackout(0);
 

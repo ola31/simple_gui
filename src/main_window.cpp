@@ -23,6 +23,10 @@ namespace launchgui {
 int ros_topic_data;
 bool ros_status_flag = 0;
 
+bool ros_status_flag_cmd = 0;
+
+QString q_command_string;
+
 extern int State[7];
 extern int Arm_State[4];
 extern int Ready;
@@ -126,6 +130,10 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     //Screenshot
     QObject::connect(ui.Button_nuc1_screenshot, SIGNAL(clicked(bool)), this, SLOT(NUC1_screenshot_clicked(bool)));
     QObject::connect(ui.Button_nuc2_screenshot, SIGNAL(clicked(bool)), this, SLOT(NUC2_screenshot_clicked(bool)));
+
+    //command_linedeit
+    QObject::connect(ui.command_lineEdit, SIGNAL(testChanged(QString)), this, SLOT((testChanged(QString))));
+    QObject::connect(ui.Button_Cmd_go, SIGNAL(clicked(bool)), this, SLOT(Button_Cmd_go_clicked()));
 
 
 
@@ -471,7 +479,14 @@ void MainWindow::NUC2_screenshot_clicked(bool checked)
   }
   else{
     dialog->close();//add
+
   }
+}
+
+void MainWindow::Button_Cmd_go_clicked()
+{
+  q_command_string = ui.command_lineEdit->text();
+  ros_status_flag_cmd = true;
 }
 
 /*****************************************************************************

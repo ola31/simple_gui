@@ -32,7 +32,7 @@ namespace launchgui {
 ** Implementation
 *****************************************************************************/
 
-int State[7];
+int State[8];
 int Arm_State[4];
 int Ready;
 QImage qt_image;
@@ -94,8 +94,11 @@ bool QNode::init() {
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
         Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
-        screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
         //screenshot
+        screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
+        //tele_onoff(자율주행 or 조종)
+        teleop_onoff_subscriber = n.subscribe("/teleop_onoff",1000,&QNode::teleop_onoff_Callback, this);
+
 	start();
 	return true;
 }
@@ -133,6 +136,9 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
         //screenshot
         screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
+        //tele_onoff(자율주행 or 조종)
+        teleop_onoff_subscriber = n.subscribe("/teleop_onoff",1000,&QNode::teleop_onoff_Callback, this);
+
 
 	start();
 	return true;
@@ -163,6 +169,9 @@ void QNode::run() {
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
         //screenshot
         screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
+        //tele_onoff(자율주행 or 조종)
+        teleop_onoff_subscriber = n.subscribe("/teleop_onoff",1000,&QNode::teleop_onoff_Callback, this);
+
 
   //int count = 0;
         while ( ros::ok() ) {
@@ -330,6 +339,12 @@ void QNode::screenshot_Callback(const sensor_msgs::Image& msg){
    qt_image_screenshot = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
   //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
    Q_EMIT statusUpdated_sc();
+}
+
+void QNode::teleop_onoff_Callback(const std_msgs::Int8& msg){
+  State[7] = msg.data;
+  Q_EMIT statusUpdated();
+
 }
 
 

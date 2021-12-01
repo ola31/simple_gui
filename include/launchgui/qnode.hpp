@@ -25,6 +25,7 @@
 #include <QThread>
 #include <QStringListModel>
 #include <std_msgs/UInt16.h>
+#include <std_msgs/Int8.h>
 //#include <sensor_msgs/Image.h>
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/opencv.hpp>
@@ -70,6 +71,8 @@ public:
         void Arm_key_status_Callback(const std_msgs::UInt16& state_msg);
         void Arm_service_status_Callback(const std_msgs::UInt16& state_msg);
         void screenshot_Callback(const sensor_msgs::Image& msg);
+
+        void teleop_onoff_Callback(const std_msgs::Int8& msg);
 
 
 	/*********************
@@ -117,6 +120,9 @@ private:
         ros::Subscriber Arm_key_status_subscriber;
         ros::Subscriber Arm_service_status_subscriber;
         ros::Subscriber screenshot_subscriber;
+
+        ros::Subscriber teleop_onoff_subscriber;
+
 
         QStringListModel logging_model;
 };

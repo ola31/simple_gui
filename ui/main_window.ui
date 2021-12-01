@@ -36,8 +36,8 @@
        <widget class="QTabWidget" name="tab_manager">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>10</y>
+          <x>-10</x>
+          <y>20</y>
           <width>1431</width>
           <height>931</height>
          </rect>
@@ -992,8 +992,8 @@ WebSocket</string>
          <widget class="QLineEdit" name="command_lineEdit">
           <property name="geometry">
            <rect>
-            <x>840</x>
-            <y>670</y>
+            <x>1030</x>
+            <y>770</y>
             <width>381</width>
             <height>25</height>
            </rect>
@@ -1002,8 +1002,8 @@ WebSocket</string>
          <widget class="QPushButton" name="Button_Cmd_go">
           <property name="geometry">
            <rect>
-            <x>1130</x>
-            <y>700</y>
+            <x>1140</x>
+            <y>810</y>
             <width>89</width>
             <height>25</height>
            </rect>
@@ -1221,6 +1221,72 @@ WebSocket</string>
            </property>
           </widget>
          </widget>
+         <widget class="QPushButton" name="Button_Auto_drive_Mode">
+          <property name="geometry">
+           <rect>
+            <x>890</x>
+            <y>720</y>
+            <width>101</width>
+            <height>25</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Auto_drive</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="Button_Remote_control_Mode">
+          <property name="geometry">
+           <rect>
+            <x>1000</x>
+            <y>720</y>
+            <width>121</width>
+            <height>25</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Remote_control</string>
+          </property>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="geometry">
+           <rect>
+            <x>880</x>
+            <y>660</y>
+            <width>251</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string>Joy Mode</string>
+          </property>
+          <widget class="QLabel" name="state_label_8">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="state_label_9">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>20</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+         <zorder>groupBox_5</zorder>
          <zorder>frame_5</zorder>
          <zorder>frame_4</zorder>
          <zorder>frame_3</zorder>
@@ -1243,6 +1309,8 @@ WebSocket</string>
          <zorder>command_lineEdit</zorder>
          <zorder>Button_Cmd_go</zorder>
          <zorder>Arm</zorder>
+         <zorder>Button_Auto_drive_Mode</zorder>
+         <zorder>Button_Remote_control_Mode</zorder>
         </widget>
        </widget>
       </widget>
@@ -1282,8 +1350,8 @@ WebSocket</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>150</width>
-     <height>400</height>
+     <width>318</width>
+     <height>503</height>
     </size>
    </property>
    <property name="allowedAreas">

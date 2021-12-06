@@ -75,6 +75,7 @@ public Q_SLOTS:
     void Arm_joy();
     void Arm_key();
     void Arm_service();
+    void Arm_teleopkey_topicpub();
 
     void All_stop();
 

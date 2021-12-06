@@ -117,6 +117,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_Arm_key, SIGNAL(clicked()), this, SLOT(Arm_key()));
     QObject::connect(ui.Button_Arm_service, SIGNAL(clicked()), this, SLOT(Arm_service()));
 
+    QObject::connect(ui.Button_teleop_keyboard_pub, SIGNAL(clicked()), this, SLOT(Arm_teleopkey_topicpub()));
+
     QObject::connect(ui.Off_Arm, SIGNAL(clicked()), this, SLOT(Off_Arm()));
     QObject::connect(ui.OFf_Arm_joy, SIGNAL(clicked()), this, SLOT(Off_Arm_joy()));
     QObject::connect(ui.Off_Arm_key, SIGNAL(clicked()), this, SLOT(Off_Arm_key()));
@@ -447,6 +449,13 @@ void MainWindow::Arm_service()
 {
   ros_topic_data = 130;
   ros_status_flag = true;
+}
+
+void MainWindow::Arm_teleopkey_topicpub()
+{
+  std::string command_topicpub = "gnome-terminal -- rosrun manipulator_key_topicpub manipulator_key_topicpub_node";
+  const char *t_html = command_topicpub.c_str();
+  system(t_html);
 }
 
 

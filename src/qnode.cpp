@@ -33,7 +33,7 @@ namespace launchgui {
 *****************************************************************************/
 
 int State[8];
-int Arm_State[4];
+int Arm_State[5];
 int Ready;
 QImage qt_image;
 QImage qt_image_gripper;
@@ -90,9 +90,13 @@ bool QNode::init() {
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
         Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Arm
+
+        nuc2_status_subscriber = n.subscribe("/getmission_arm_ready",100,&QNode::nuc_status_Callback, this);
+
+
         Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
-        Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
+        Arm_key_status_subscriber = n.subscribe("/arm_status/key_sub",1000,&QNode::Arm_key_status_Callback, this);
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
         //screenshot
         screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
@@ -120,6 +124,8 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 
         get_Ready_subscriber = n.subscribe("getmission_ready", 1000, &QNode::getready_Callback, this);
 
+        nuc2_status_subscriber = n.subscribe("/getmission_arm_ready",100,&QNode::nuc_status_Callback, this);
+
         A_state_subscriber = n.subscribe("autodriving_state", 1000,  &QNode::A_state_Callback, this); //mission state
         D_state_subscriber = n.subscribe("door_state", 1000,  &QNode::D_state_Callback, this);
         O_state_subscriber = n.subscribe("obstacle_state", 1000,  &QNode::O_state_Callback, this);
@@ -130,9 +136,12 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
         Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Arm
+
+        nuc2_status_subscriber = n.subscribe("/getmission_arm_ready",100,&QNode::nuc_status_Callback, this);
+
         Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
-        Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
+        Arm_key_status_subscriber = n.subscribe("/arm_status/key_sub",1000,&QNode::Arm_key_status_Callback, this);
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
         //screenshot
         screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
@@ -163,9 +172,12 @@ void QNode::run() {
         //Front_Image_subscriber2 = it.subscribe("/image_raw/compressed",1000,&QNode::Front_ImageCb,image_transport::TransportHints("compressed"),this);
 
         //Arm
+
+        nuc2_status_subscriber = n.subscribe("/getmission_arm_ready",100,&QNode::nuc_status_Callback, this);
+
         Arm_status_subscriber = n.subscribe("/arm_status/arm",1000,&QNode::Arm_status_Callback, this);
         Arm_joy_status_subscriber = n.subscribe("/arm_status/joy",1000,&QNode::Arm_joy_status_Callback, this);
-        Arm_key_status_subscriber = n.subscribe("/arm_status/key",1000,&QNode::Arm_key_status_Callback, this);
+        Arm_key_status_subscriber = n.subscribe("/arm_status/key_sub",1000,&QNode::Arm_key_status_Callback, this);
         Arm_service_status_subscriber = n.subscribe("/arm_status/service",1000,&QNode::Arm_service_status_Callback, this);
         //screenshot
         screenshot_subscriber = n.subscribe("/screenshot/image_raw",1000,&QNode::screenshot_Callback, this);
@@ -237,8 +249,11 @@ void QNode::JOY_state_Callback(const std_msgs::UInt16& state_msg){
 
 void QNode::blackout(int a){
 
-    for(int i=0; i<7; i++) {
+    for(int i=0; i<8; i++) {
         State[i] = a;
+    }
+    for(int i=0;i<5;i++){
+      Arm_State[i] = a;
     }
     Ready = a;
 
@@ -300,19 +315,26 @@ void QNode::Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConst
 
 }
 
-void QNode::Arm_status_Callback(const std_msgs::UInt16& state_msg){
+
+void QNode::nuc_status_Callback(const std_msgs::Bool& state_msg){
+    Arm_State[4] = state_msg.data;
+        Q_EMIT statusUpdated();
+}
+
+
+void QNode::Arm_status_Callback(const std_msgs::Bool& state_msg){
     Arm_State[0] = state_msg.data;
         Q_EMIT statusUpdated();
 }
-void QNode::Arm_joy_status_Callback(const std_msgs::UInt16& state_msg){
+void QNode::Arm_joy_status_Callback(const std_msgs::Bool& state_msg){
     Arm_State[1] = state_msg.data;
         Q_EMIT statusUpdated();
 }
-void QNode::Arm_key_status_Callback(const std_msgs::UInt16& state_msg){
+void QNode::Arm_key_status_Callback(const std_msgs::Bool& state_msg){
     Arm_State[2] = state_msg.data;
         Q_EMIT statusUpdated();
 }
-void QNode::Arm_service_status_Callback(const std_msgs::UInt16& state_msg){
+void QNode::Arm_service_status_Callback(const std_msgs::Bool& state_msg){
     Arm_State[3] = state_msg.data;
         Q_EMIT statusUpdated();
 }

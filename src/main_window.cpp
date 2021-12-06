@@ -28,7 +28,7 @@ bool ros_status_flag_cmd = 0;
 QString q_command_string;
 
 extern int State[8];
-extern int Arm_State[4];
+extern int Arm_State[5];
 extern int Ready;
 extern QImage qt_image;
 extern QImage qt_image_gripper;
@@ -312,6 +312,14 @@ void MainWindow::updateState() {
     else{
         ui.status_label_arm_service->setPixmap(m_lightimg[0]);
     }
+
+    if(Arm_State[4] == 1){
+        ui.state_label_nuc2->setPixmap(m_lightimg[1]);
+    }
+    else{
+        ui.state_label_nuc2->setPixmap(m_lightimg[0]);
+    }
+
 
 
     ui.label_7->setPixmap(QPixmap::fromImage(qt_image));

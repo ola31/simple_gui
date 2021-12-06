@@ -26,6 +26,7 @@
 #include <QStringListModel>
 #include <std_msgs/UInt16.h>
 #include <std_msgs/Int8.h>
+#include <std_msgs/Bool.h>
 //#include <sensor_msgs/Image.h>
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/opencv.hpp>
@@ -66,10 +67,11 @@ public:
         void Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg);
 
         //Arm
-        void Arm_status_Callback(const std_msgs::UInt16& state_msg);
-        void Arm_joy_status_Callback(const std_msgs::UInt16& state_msg);
-        void Arm_key_status_Callback(const std_msgs::UInt16& state_msg);
-        void Arm_service_status_Callback(const std_msgs::UInt16& state_msg);
+        void nuc_status_Callback(const std_msgs::Bool& state_msg);
+        void Arm_status_Callback(const std_msgs::Bool& state_msg);
+        void Arm_joy_status_Callback(const std_msgs::Bool& state_msg);
+        void Arm_key_status_Callback(const std_msgs::Bool& state_msg);
+        void Arm_service_status_Callback(const std_msgs::Bool& state_msg);
         void screenshot_Callback(const sensor_msgs::Image& msg);
 
         void teleop_onoff_Callback(const std_msgs::Int8& msg);
@@ -114,6 +116,8 @@ private:
         ros::Subscriber Front_Image_subscriber;
         ros::Subscriber Gripper_Image_subscriber;
         //image_transport::Subscriber Front_Image_subscriber2;
+
+        ros::Subscriber nuc2_status_subscriber;
 
         ros::Subscriber Arm_status_subscriber;
         ros::Subscriber Arm_joy_status_subscriber;

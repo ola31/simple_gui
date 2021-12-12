@@ -311,7 +311,7 @@ void QNode::Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConst
    int HEIGHT = 180*(1.8);
    qt_image_gripper = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
   //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
-   Q_EMIT statusUpdated_sc();
+   Q_EMIT statusUpdated();
 
 }
 

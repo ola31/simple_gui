@@ -729,8 +729,7 @@
              </rect>
             </property>
             <property name="text">
-             <string>Front &amp;&amp; Back 
-CAM</string>
+             <string>Arm_CAM</string>
             </property>
            </widget>
            <widget class="QPushButton" name="Off_Front_and_Back_CAM">

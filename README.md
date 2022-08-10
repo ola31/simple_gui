@@ -1,3 +1,3 @@
 # simple gui
 
-Drok3 GUI package
+Simple Gui package

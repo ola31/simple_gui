@@ -1,3 +1,3 @@
-# launchgui_ola
+# simple gui
 
 Drok3 GUI package

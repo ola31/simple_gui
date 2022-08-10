@@ -12,13 +12,13 @@
 #include <QtGui>
 #include <QMessageBox>
 #include <iostream>
-#include "../include/launchgui/main_window.hpp"
+#include "../include/simple_gui/main_window.hpp"
 
 /*****************************************************************************
 ** Namespaces
 *****************************************************************************/
 
-namespace launchgui {
+namespace simple_gui {
 
 int ros_topic_data;
 bool ros_status_flag = 0;
@@ -28,7 +28,7 @@ bool ros_status_flag_cmd = 0;
 QString q_command_string;
 
 extern int State[8];
-extern int Arm_State[5];
+//extern int Arm_State[5];
 extern int Ready;
 extern QImage qt_image;
 extern QImage qt_image_gripper;
@@ -46,7 +46,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 {
 
 	ui.setupUi(this); // Calling this incidentally connects all ui's triggers to on_...() callbacks in this class.
-  ui.Button_nuc1_screenshot->setCheckable(true);
+  //ui.Button_nuc1_screenshot->setCheckable(true);
 
   dialog = new Sc_Dialog; //add
   //dialog->setModal(true); //add
@@ -62,15 +62,15 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	/*********************
 	** Logging
 	**********************/
-	ui.view_logging->setModel(qnode.loggingModel());
-    QObject::connect(&qnode, SIGNAL(loggingUpdated()), this, SLOT(updateLoggingView()));
+  //ui.view_logging->setModel(qnode.loggingModel());
+    //QObject::connect(&qnode, SIGNAL(loggingUpdated()), this, SLOT(updateLoggingView()));
 
     /*********************
     ** Auto Start
     **********************/
-    if ( ui.checkbox_remember_settings->isChecked() ) {
-        on_button_connect_clicked(true);
-    }
+    //if ( ui.checkbox_remember_settings->isChecked() ) {
+    //    on_button_connect_clicked(true);
+    //}
 
     QObject::connect(&qnode, SIGNAL(statusUpdated()), this, SLOT(updateState()));
     QObject::connect(&qnode, SIGNAL(statusUpdated_sc()), this, SLOT(updateState_sc())); //add
@@ -78,7 +78,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 
     //QObject::connect(ui.Button_getmission, SIGNAL(clicked()), this, SLOT(launch_getmission()));
     //QObject::connect(ui.Button_Web, SIGNAL(clicked()), this, SLOT(Refresh_Web()));
-
+/*
     QObject::connect(ui.Button_AutoDriving, SIGNAL(clicked()), this, SLOT(AutoDriving()));
     QObject::connect(ui.Button_Door, SIGNAL(clicked()), this, SLOT(Door()));
     QObject::connect(ui.Button_Obstacle, SIGNAL(clicked()), this, SLOT(Obstacle()));
@@ -99,19 +99,21 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 
     QObject::connect(ui.Off_md, SIGNAL(clicked()), this, SLOT(Off_MD()));
     QObject::connect(ui.Off_Joy, SIGNAL(clicked()), this, SLOT(Off_JOY()));
+    */
 
     QObject::connect(ui.Button_Front_CAM, SIGNAL(clicked()), this, SLOT(Front_CAM()));   //Front CAM
     QObject::connect(ui.Off_Front_CAM, SIGNAL(clicked()), this, SLOT(Off_Front_CAM()));  //Front CAM OFf
-
+/*
     QObject::connect(ui.Button_Back_CAM, SIGNAL(clicked()), this, SLOT(Back_CAM()));   //Back CAM
     QObject::connect(ui.Off_Back_CAM, SIGNAL(clicked()), this, SLOT(Off_Back_CAM()));  //Back CAM Off
 
     QObject::connect(ui.Button_Front_and_Back_CAM, SIGNAL(clicked()), this, SLOT(Front_and_Back_CAM()));   //Back CAM
     QObject::connect(ui.Off_Front_and_Back_CAM, SIGNAL(clicked()), this, SLOT(Off_Front_and_Back_CAM()));  //Back CAM Off
-
+*/
     //Sub_Pub_again(nuc2_connect)
-    QObject::connect(ui.Button_NUC2_Connect, SIGNAL(clicked()), this, SLOT(nuc2_conncet()));
+  //  QObject::connect(ui.Button_NUC2_Connect, SIGNAL(clicked()), this, SLOT(nuc2_conncet()));
     //ARM
+    /*
     QObject::connect(ui.Button_Arm, SIGNAL(clicked()), this, SLOT(Arm()));
     QObject::connect(ui.Button_Arm_joy, SIGNAL(clicked()), this, SLOT(Arm_joy()));
     QObject::connect(ui.Button_Arm_key, SIGNAL(clicked()), this, SLOT(Arm_key()));
@@ -123,6 +125,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.OFf_Arm_joy, SIGNAL(clicked()), this, SLOT(Off_Arm_joy()));
     QObject::connect(ui.Off_Arm_key, SIGNAL(clicked()), this, SLOT(Off_Arm_key()));
     QObject::connect(ui.Off_Arm_service, SIGNAL(clicked()), this, SLOT(Off_Arm_service()));
+    */
 
     //COMM
     QObject::connect(ui.Button_html, SIGNAL(clicked()), this, SLOT(Html()));
@@ -130,12 +133,14 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_Edit_html, SIGNAL(clicked()), this, SLOT(Edit_html()));
 
     //Screenshot
+    /*
     QObject::connect(ui.Button_nuc1_screenshot, SIGNAL(clicked(bool)), this, SLOT(NUC1_screenshot_clicked(bool)));
     QObject::connect(ui.Button_nuc2_screenshot, SIGNAL(clicked(bool)), this, SLOT(NUC2_screenshot_clicked(bool)));
+*/
 
     //command_linedeit
-    QObject::connect(ui.command_lineEdit, SIGNAL(testChanged(QString)), this, SLOT((testChanged(QString))));
-    QObject::connect(ui.Button_Cmd_go, SIGNAL(clicked(bool)), this, SLOT(Button_Cmd_go_clicked()));
+   // QObject::connect(ui.command_lineEdit, SIGNAL(testChanged(QString)), this, SLOT((testChanged(QString))));
+   // QObject::connect(ui.Button_Cmd_go, SIGNAL(clicked(bool)), this, SLOT(Button_Cmd_go_clicked()));
 
 
 
@@ -158,8 +163,9 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 
    ui.label_7->setPixmap(cat1_img);
    ui.label_9->setPixmap(cat2_img);
-   ui.label_11->setPixmap(KUDOS_img);
+   //ui.label_11->setPixmap(KUDOS_img);
 
+   //qnode.init(); //ola
 
 
 }
@@ -183,38 +189,39 @@ void MainWindow::showNoMasterMessage() {
  * is already checked or not.
  */
 
-void MainWindow::on_button_connect_clicked(bool check ) {
-	if ( ui.checkbox_use_environment->isChecked() ) {
-		if ( !qnode.init() ) {
-			showNoMasterMessage();
-		} else {
-			ui.button_connect->setEnabled(false);
-		}
-	} else {
-		if ( ! qnode.init(ui.line_edit_master->text().toStdString(),
-				   ui.line_edit_host->text().toStdString()) ) {
-			showNoMasterMessage();
-		} else {
-			ui.button_connect->setEnabled(false);
-			ui.line_edit_master->setReadOnly(true);
-			ui.line_edit_host->setReadOnly(true);
-			ui.line_edit_topic->setReadOnly(true);
-		}
-	}
-}
+//void MainWindow::on_button_connect_clicked(bool check ) {
+//	if ( ui.checkbox_use_environment->isChecked() ) {
+//		if ( !qnode.init() ) {
+//			showNoMasterMessage();
+//		} else {
+//			ui.button_connect->setEnabled(false);
+//		}
+//  }
+//  //else {
+//    //if ( ! qnode.init(ui.line_edit_master->text().toStdString(),
+//    //		   ui.line_edit_host->text().toStdString()) ) {
+//    //	showNoMasterMessage();
+//    //} else {
+//      //ui.button_connect->setEnabled(false);
+//      //ui.line_edit_master->setReadOnly(true);
+//      //ui.line_edit_host->setReadOnly(true);
+//      //ui.line_edit_topic->setReadOnly(true);
+//    //}
+//  //}
+//}
+//
 
-
-void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
-	bool enabled;
-	if ( state == 0 ) {
-		enabled = true;
-	} else {
-		enabled = false;
-	}
-	ui.line_edit_master->setEnabled(enabled);
-	ui.line_edit_host->setEnabled(enabled);
-	//ui.line_edit_topic->setEnabled(enabled);
-}
+//void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
+//	bool enabled;
+//	if ( state == 0 ) {
+//		enabled = true;
+//	} else {
+//		enabled = false;
+//	}
+//  //ui.line_edit_master->setEnabled(enabled);
+//  //ui.line_edit_host->setEnabled(enabled);
+//	//ui.line_edit_topic->setEnabled(enabled);
+//}
 
 /*****************************************************************************
 ** Implemenation [Slots][manually connected]
@@ -225,11 +232,12 @@ void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
  * this will drop the cursor down to the last line in the QListview to ensure
  * the user can always see the latest log message.
  */
-void MainWindow::updateLoggingView() {
-        ui.view_logging->scrollToBottom();
-}
+//void MainWindow::updateLoggingView() {
+//        ui.view_logging->scrollToBottom();
+//}
 
 void MainWindow::updateState() {
+  /*
     if(State[0] == 1){
         ui.state_label_1->setPixmap(m_lightimg[1]);
     }
@@ -286,7 +294,9 @@ void MainWindow::updateState() {
       ui.state_label_8->setPixmap(m_lightimg[1]);
       ui.state_label_9->setPixmap(m_lightimg[0]);
     }
+    */
     //Arm
+    /*
     if(Arm_State[0] == 1){
         ui.state_label_arm->setPixmap(m_lightimg[1]);
     }
@@ -322,7 +332,7 @@ void MainWindow::updateState() {
         ui.state_label_nuc2->setPixmap(m_lightimg[0]);
     }
 
-
+*/
 
     ui.label_7->setPixmap(QPixmap::fromImage(qt_image));
     ui.label_7->resize(ui.label_7->pixmap()->size());
@@ -335,7 +345,7 @@ void MainWindow::updateState() {
 void MainWindow::updateState_sc(){
     dialog->setWindowTitle("NUC Screen");
     dialog->show();//add
-    dialog->show_screenshot();//add
+    // dialog->show_screenshot();//add
 }
 
 void MainWindow::getReady() {
@@ -347,7 +357,7 @@ void MainWindow::getReady() {
     }
 }
 
-
+/*
 void MainWindow::AutoDriving() {
     ros_topic_data = 1;
     ros_status_flag = true;
@@ -402,13 +412,14 @@ void MainWindow::All_stop() {
     ros_topic_data = 9;
     ros_status_flag = true;
 }
+*/
 
 void MainWindow::Front_CAM()
 {
   ros_topic_data = 20;
   ros_status_flag = true;
 }
-
+/*
 void MainWindow::Back_CAM(){
     ros_topic_data = 30;
     ros_status_flag = true;
@@ -419,14 +430,17 @@ void MainWindow::Front_and_Back_CAM()
   ros_topic_data = 40;
   ros_status_flag = true;
 }
+*/
 
 //Sub_Pub again(nuc2 conncet)
-void MainWindow::nuc2_conncet()
+
+/*void MainWindow::nuc2_conncet()
 {
   ros_topic_data = 99;
   ros_status_flag = true;
 }
-
+*/
+/*
 void MainWindow::Arm()
 {
   ros_topic_data = 100;
@@ -457,7 +471,7 @@ void MainWindow::Arm_teleopkey_topicpub()
   const char *t_html = command_topicpub.c_str();
   system(t_html);
 }
-
+*/
 
 //COMM
 void MainWindow::Html()
@@ -482,6 +496,7 @@ void MainWindow::Edit_html()
 }
 
 //Screenshot
+/*
 void MainWindow::NUC1_screenshot_clicked(bool checked)
 {
   if(checked == true){
@@ -494,7 +509,8 @@ void MainWindow::NUC1_screenshot_clicked(bool checked)
   }
 
 }
-
+*/
+/*
 void MainWindow::NUC2_screenshot_clicked(bool checked)
 {
   if(checked == true){
@@ -507,17 +523,19 @@ void MainWindow::NUC2_screenshot_clicked(bool checked)
 
   }
 }
-
+*/
+/*
 void MainWindow::Button_Cmd_go_clicked()
 {
   q_command_string = ui.command_lineEdit->text();
   ros_status_flag_cmd = true;
 }
+*/
 
 /*****************************************************************************
 ** Stop the selected thing
 *****************************************************************************/
-
+/*
 void MainWindow::Off_auto() {
     ros_topic_data = 11;
     ros_status_flag = true;
@@ -552,13 +570,13 @@ void MainWindow::Off_JOY() {     //md_driver
     ros_topic_data = 71;
     ros_status_flag = true;
 }
-
+*/
 void MainWindow::Off_Front_CAM()
 {
   ros_topic_data = 21;
   ros_status_flag = true;
 }
-
+/*
 void MainWindow::Off_Back_CAM(){
     ros_topic_data = 31;
     ros_status_flag = true;
@@ -569,7 +587,7 @@ void MainWindow::Off_Front_and_Back_CAM()
   ros_topic_data = 41;
   ros_status_flag = true;
 }
-
+/*
 void MainWindow::Off_Arm()
 {
   ros_topic_data = 101;
@@ -593,6 +611,7 @@ void MainWindow::Off_Arm_service()
   ros_topic_data = 131;
   ros_status_flag = true;
 }
+*/
 
 
 /*****************************************************************************
@@ -608,35 +627,40 @@ void MainWindow::on_actionAbout_triggered() {
 *****************************************************************************/
 
 void MainWindow::ReadSettings() {
-    QSettings settings("Qt-Ros Package", "launchgui");
+    QSettings settings("Qt-Ros Package", "simple_gui");
     restoreGeometry(settings.value("geometry").toByteArray());
     restoreState(settings.value("windowState").toByteArray());
-    QString master_url = settings.value("master_url",QString("http://10.30.94.232:11311/")).toString();
-    QString host_url = settings.value("host_url", QString("10.30.93.206")).toString();
+    //QString master_url = settings.value("master_url",QString("http://10.30.94.232:11311/")).toString();
+    QString master_url = QString("http://localhost:11311/");
+    //QString host_url = settings.value("host_url", QString("10.30.93.206")).toString();
+    QString host_url = QString("localhost");
     //QString topic_name = settings.value("topic_name", QString("/chatter")).toString();
-    ui.line_edit_master->setText(master_url);
-    ui.line_edit_host->setText(host_url);
+    //ui.line_edit_master->setText(master_url);
+    //ui.line_edit_host->setText(host_url);
     //ui.line_edit_topic->setText(topic_name);
-    bool remember = settings.value("remember_settings", false).toBool();
-    ui.checkbox_remember_settings->setChecked(remember);
-    bool checked = settings.value("use_environment_variables", false).toBool();
-    ui.checkbox_use_environment->setChecked(checked);
-    if ( checked ) {
-    	ui.line_edit_master->setEnabled(false);
-    	ui.line_edit_host->setEnabled(false);
+    //bool remember = settings.value("remember_settings", false).toBool();
+   // ui.checkbox_remember_settings->setChecked(remember);
+    //bool checked = settings.value("use_environment_variables", false).toBool();
+    //ui.checkbox_use_environment->setChecked(checked);
+    //if ( checked ) {
+      //ui.line_edit_master->setEnabled(false);
+      //ui.line_edit_host->setEnabled(false);
     	//ui.line_edit_topic->setEnabled(false);
-    }
+    //}
 }
 
 void MainWindow::WriteSettings() {
-    QSettings settings("Qt-Ros Package", "launchgui");
-    settings.setValue("master_url",ui.line_edit_master->text());
-    settings.setValue("host_url",ui.line_edit_host->text());
+    QSettings settings("Qt-Ros Package", "simple_gui");
+    //settings.setValue("master_url",ui.line_edit_master->text());
+    ///settings.setValue("host_url",ui.line_edit_host->text());
+    settings.setValue("master_url","http://localhost:11311/");
+    settings.setValue("host_url","localhost");
+
     //settings.setValue("topic_name",ui.line_edit_topic->text());
-    settings.setValue("use_environment_variables",QVariant(ui.checkbox_use_environment->isChecked()));
+    //settings.setValue("use_environment_variables",QVariant(ui.checkbox_use_environment->isChecked()));
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
-    settings.setValue("remember_settings",QVariant(ui.checkbox_remember_settings->isChecked()));
+    //settings.setValue("remember_settings",QVariant(ui.checkbox_remember_settings->isChecked()));
 
 }
 

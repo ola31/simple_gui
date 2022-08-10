@@ -16,14 +16,14 @@ public:
   explicit Sc_Dialog(QWidget *parent = nullptr);
   ~Sc_Dialog();
 
-  void show_screenshot();
+  //void show_screenshot();
 
 public Q_SLOTS:
 
  // void updateState_sc();//add
 
 private:
-  //launchgui::QNode q_node;
+  //simple_gui::QNode q_node;
   Ui::Sc_Dialog *ui;
 };
 

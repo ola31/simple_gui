@@ -1,5 +1,5 @@
 /**
- * @file /include/launchgui/qnode.hpp
+ * @file /include/simple_gui/qnode.hpp
  *
  * @brief Communications central!
  *
@@ -9,8 +9,8 @@
 ** Ifdefs
 *****************************************************************************/
 
-#ifndef launchgui_QNODE_HPP_
-#define launchgui_QNODE_HPP_
+#ifndef simple_gui_QNODE_HPP_
+#define simple_gui_QNODE_HPP_
 
 /*****************************************************************************
 ** Includes
@@ -39,7 +39,7 @@
 ** Namespaces
 *****************************************************************************/
 
-namespace launchgui {
+namespace simple_gui {
 
 /*****************************************************************************
 ** Class
@@ -53,7 +53,7 @@ public:
 	bool init();
 	bool init(const std::string &master_url, const std::string &host_url);
 	void run();
-
+/*
         void A_state_Callback(const std_msgs::UInt16& state_msg);
         void D_state_Callback(const std_msgs::UInt16& state_msg);
         void O_state_Callback(const std_msgs::UInt16& state_msg);
@@ -61,18 +61,22 @@ public:
         void S_state_Callback(const std_msgs::UInt16& state_msg);
         void MD_state_Callback(const std_msgs::UInt16& state_msg);
         void JOY_state_Callback(const std_msgs::UInt16& state_msg);
+        */
         void blackout(int a);
         void getready_Callback(const std_msgs::UInt16& ready);
+
         void Front_ImageCb(const sensor_msgs::ImageConstPtr& msg);
         void Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg);
 
         //Arm
+        /*
         void nuc_status_Callback(const std_msgs::Bool& state_msg);
         void Arm_status_Callback(const std_msgs::Bool& state_msg);
         void Arm_joy_status_Callback(const std_msgs::Bool& state_msg);
         void Arm_key_status_Callback(const std_msgs::Bool& state_msg);
         void Arm_service_status_Callback(const std_msgs::Bool& state_msg);
         void screenshot_Callback(const sensor_msgs::Image& msg);
+        */
 
         void teleop_onoff_Callback(const std_msgs::Int8& msg);
 
@@ -105,7 +109,7 @@ private:
         ros::Publisher command_publisher;
 
         ros::Subscriber get_Ready_subscriber;
-
+/*
         ros::Subscriber A_state_subscriber;
         ros::Subscriber D_state_subscriber;
         ros::Subscriber O_state_subscriber;
@@ -113,24 +117,25 @@ private:
         ros::Subscriber P_state_subscriber;
         ros::Subscriber MD_state_subscriber;
         ros::Subscriber JOY_state_subscriber;
+        */
         ros::Subscriber Front_Image_subscriber;
         ros::Subscriber Gripper_Image_subscriber;
         //image_transport::Subscriber Front_Image_subscriber2;
 
-        ros::Subscriber nuc2_status_subscriber;
-
+      //  ros::Subscriber nuc2_status_subscriber;
+/*
         ros::Subscriber Arm_status_subscriber;
         ros::Subscriber Arm_joy_status_subscriber;
         ros::Subscriber Arm_key_status_subscriber;
         ros::Subscriber Arm_service_status_subscriber;
         ros::Subscriber screenshot_subscriber;
-
-        ros::Subscriber teleop_onoff_subscriber;
+*/
+       // ros::Subscriber teleop_onoff_subscriber;
 
 
         QStringListModel logging_model;
 };
 
-}  // namespace launchgui
+}  // namespace simple_gui
 
-#endif /* launchgui_QNODE_HPP_ */
+#endif /* simple_gui_QNODE_HPP_ */

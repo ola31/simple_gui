@@ -110,6 +110,10 @@ public Q_SLOTS:
     void Html();
     void controll_pc_websocket();
     void Edit_html();
+    void Joy_node();
+    void RTSP();
+    void RTSP_off();
+    void JOY_off();
 
     //void NUC1_screenshot_clicked(bool checked);
     //void NUC2_screenshot_clicked(bool checked);

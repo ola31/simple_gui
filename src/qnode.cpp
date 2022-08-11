@@ -89,7 +89,7 @@ bool QNode::init() {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         */
-        Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
         Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Arm
 /*
@@ -138,7 +138,7 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         */
-        Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
         Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Arm
 
@@ -174,7 +174,7 @@ void QNode::run() {
         MD_state_subscriber = n.subscribe("md_driver_status", 1000, &QNode::MD_state_Callback, this);
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         */
-        Front_Image_subscriber = n.subscribe("/usb_cam/image_raw",1000,&QNode::Front_ImageCb, this);
+        Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
         Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Front_Image_subscriber2 = it.subscribe("/image_raw/compressed",1000,&QNode::Front_ImageCb,image_transport::TransportHints("compressed"),this);
 

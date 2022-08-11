@@ -132,6 +132,13 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_controll_pc_websocket, SIGNAL(clicked()), this, SLOT(controll_pc_websocket()));
     QObject::connect(ui.Button_Edit_html, SIGNAL(clicked()), this, SLOT(Edit_html()));
 
+    //Teleoperation
+    QObject::connect(ui.rtsp_client_button, SIGNAL(clicked()), this, SLOT(RTSP()));
+    QObject::connect(ui.joy_node_button, SIGNAL(clicked()), this, SLOT(Joy_node()));
+    QObject::connect(ui.rtsp_off_button, SIGNAL(clicked()), this, SLOT(RTSP_off()));
+    QObject::connect(ui.joy_off_button, SIGNAL(clicked()), this, SLOT(JOY_off()));
+
+
     //Screenshot
     /*
     QObject::connect(ui.Button_nuc1_screenshot, SIGNAL(clicked(bool)), this, SLOT(NUC1_screenshot_clicked(bool)));
@@ -477,7 +484,7 @@ void MainWindow::Arm_teleopkey_topicpub()
 void MainWindow::Html()
 {
   //ROS_INFO("Html");
-  std::string command_html = "gnome-terminal -- firefox ~/catkin_ws/src/roslibjs/examples/simple_gui.html";
+  std::string command_html = "gnome-terminal -- firefox ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
   const char *c_html = command_html.c_str();
   system(c_html);
 }
@@ -490,11 +497,38 @@ void MainWindow::controll_pc_websocket()
 
 void MainWindow::Edit_html()
 {
-  std::string command_edit = "gedit ~/catkin_ws/src/roslibjs/examples/simple_gui.html";
+  std::string command_edit = "gedit ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
   const char *c_edit = command_edit.c_str();
   system(c_edit);
 }
 
+void MainWindow::Joy_node()
+{
+  std::string command_edit = "gnome-terminal -- rosrun joy joy_node";
+  const char *c_edit = command_edit.c_str();
+  system(c_edit);
+}
+
+void MainWindow::RTSP()
+{
+  std::string command_edit = "gnome-terminal -- roslaunch rtsp_to_ros rtsp_to_ros.launch";
+  const char *c_edit = command_edit.c_str();
+  system(c_edit);
+}
+
+void MainWindow::RTSP_off()
+{
+  std::string command_edit = "rosnode kill /rtsp_to_ros_node";
+  const char *c_edit = command_edit.c_str();
+  system(c_edit);
+}
+
+void MainWindow::JOY_off()
+{
+  std::string command_edit = "rosnode kill /joy_node";
+  const char *c_edit = command_edit.c_str();
+  system(c_edit);
+}
 //Screenshot
 /*
 void MainWindow::NUC1_screenshot_clicked(bool checked)

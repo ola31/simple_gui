@@ -64,10 +64,10 @@
           </property>
           <property name="geometry">
            <rect>
-            <x>330</x>
+            <x>150</x>
             <y>40</y>
-            <width>768</width>
-            <height>576</height>
+            <width>1024</width>
+            <height>768</height>
            </rect>
           </property>
           <property name="frameShape">
@@ -83,7 +83,7 @@
          <widget class="QLabel" name="label_8">
           <property name="geometry">
            <rect>
-            <x>330</x>
+            <x>160</x>
             <y>10</y>
             <width>101</width>
             <height>21</height>
@@ -101,9 +101,9 @@
          <widget class="QFrame" name="frame_5">
           <property name="geometry">
            <rect>
-            <x>1140</x>
-            <y>40</y>
-            <width>301</width>
+            <x>1250</x>
+            <y>20</y>
+            <width>201</width>
             <height>841</height>
            </rect>
           </property>
@@ -116,10 +116,10 @@
           <widget class="QGroupBox" name="groupBox_3">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>280</y>
-             <width>271</width>
-             <height>91</height>
+             <x>20</x>
+             <y>270</y>
+             <width>141</width>
+             <height>241</height>
             </rect>
            </property>
            <property name="title">
@@ -130,7 +130,7 @@
              <rect>
               <x>10</x>
               <y>30</y>
-              <width>81</width>
+              <width>111</width>
               <height>51</height>
              </rect>
             </property>
@@ -146,8 +146,8 @@
            <widget class="QPushButton" name="Button_controll_pc_websocket">
             <property name="geometry">
              <rect>
-              <x>100</x>
-              <y>30</y>
+              <x>10</x>
+              <y>90</y>
               <width>111</width>
               <height>51</height>
              </rect>
@@ -165,10 +165,10 @@ WebSocket</string>
            <widget class="QPushButton" name="Button_Edit_html">
             <property name="geometry">
              <rect>
-              <x>220</x>
-              <y>30</y>
-              <width>41</width>
-              <height>41</height>
+              <x>10</x>
+              <y>150</y>
+              <width>61</width>
+              <height>51</height>
              </rect>
             </property>
             <property name="text">
@@ -180,7 +180,7 @@ WebSocket</string>
           <widget class="QPushButton" name="quit_button">
            <property name="geometry">
             <rect>
-             <x>150</x>
+             <x>40</x>
              <y>790</y>
              <width>131</width>
              <height>25</height>
@@ -200,7 +200,7 @@ WebSocket</string>
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>60</y>
+             <y>30</y>
              <width>161</width>
              <height>80</height>
             </rect>
@@ -247,7 +247,7 @@ WebSocket</string>
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>160</y>
+             <y>130</y>
              <width>171</width>
              <height>111</height>
             </rect>
@@ -288,8 +288,8 @@ WebSocket</string>
            <rect>
             <x>0</x>
             <y>40</y>
-            <width>320</width>
-            <height>240</height>
+            <width>121</width>
+            <height>101</height>
            </rect>
           </property>
           <property name="frameShape">

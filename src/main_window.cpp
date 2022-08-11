@@ -165,7 +165,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
    ui.label_9->setPixmap(cat2_img);
    //ui.label_11->setPixmap(KUDOS_img);
 
-   //qnode.init(); //ola
+   qnode.init(); //ola
 
 
 }
@@ -477,7 +477,7 @@ void MainWindow::Arm_teleopkey_topicpub()
 void MainWindow::Html()
 {
   //ROS_INFO("Html");
-  std::string command_html = "gnome-terminal -- firefox ~/catkin_ws/src/roslibjs/examples/HW_test_server_0927.html";
+  std::string command_html = "gnome-terminal -- firefox ~/catkin_ws/src/roslibjs/examples/simple_gui.html";
   const char *c_html = command_html.c_str();
   system(c_html);
 }
@@ -490,7 +490,7 @@ void MainWindow::controll_pc_websocket()
 
 void MainWindow::Edit_html()
 {
-  std::string command_edit = "gedit ~/catkin_ws/src/roslibjs/examples/HW_test_server_0927.html";
+  std::string command_edit = "gedit ~/catkin_ws/src/roslibjs/examples/simple_gui.html";
   const char *c_edit = command_edit.c_str();
   system(c_edit);
 }

@@ -110,6 +110,7 @@ public Q_SLOTS:
     void Html();
     void controll_pc_websocket();
     void Edit_html();
+    void Web_off();
     void Joy_node();
     void RTSP();
     void RTSP_off();

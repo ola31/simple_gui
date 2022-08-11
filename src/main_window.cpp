@@ -131,6 +131,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_html, SIGNAL(clicked()), this, SLOT(Html()));
     QObject::connect(ui.Button_controll_pc_websocket, SIGNAL(clicked()), this, SLOT(controll_pc_websocket()));
     QObject::connect(ui.Button_Edit_html, SIGNAL(clicked()), this, SLOT(Edit_html()));
+    QObject::connect(ui.web_off_button, SIGNAL(clicked()), this, SLOT(Web_off()));
 
     //Teleoperation
     QObject::connect(ui.rtsp_client_button, SIGNAL(clicked()), this, SLOT(RTSP()));
@@ -498,6 +499,13 @@ void MainWindow::controll_pc_websocket()
 void MainWindow::Edit_html()
 {
   std::string command_edit = "gedit ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
+  const char *c_edit = command_edit.c_str();
+  system(c_edit);
+}
+
+void MainWindow::Web_off()
+{
+  std::string command_edit = "rosnode kill /rosbridge_websocket /rosapi";
   const char *c_edit = command_edit.c_str();
   system(c_edit);
 }

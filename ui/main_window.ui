@@ -104,7 +104,7 @@
             <x>1400</x>
             <y>40</y>
             <width>331</width>
-            <height>841</height>
+            <height>881</height>
            </rect>
           </property>
           <property name="frameShape">
@@ -118,8 +118,8 @@
             <rect>
              <x>10</x>
              <y>90</y>
-             <width>231</width>
-             <height>161</height>
+             <width>221</width>
+             <height>211</height>
             </rect>
            </property>
            <property name="font">
@@ -135,8 +135,8 @@
              <rect>
               <x>10</x>
               <y>30</y>
-              <width>211</width>
-              <height>31</height>
+              <width>191</width>
+              <height>41</height>
              </rect>
             </property>
             <property name="font">
@@ -158,9 +158,9 @@
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>80</y>
-              <width>151</width>
-              <height>41</height>
+              <y>90</y>
+              <width>131</width>
+              <height>61</height>
              </rect>
             </property>
             <property name="font">
@@ -183,9 +183,9 @@ WebSocket</string>
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>130</y>
-              <width>211</width>
-              <height>21</height>
+              <y>170</y>
+              <width>191</width>
+              <height>31</height>
              </rect>
             </property>
             <property name="focusPolicy">
@@ -201,10 +201,10 @@ WebSocket</string>
            <widget class="QPushButton" name="web_off_button">
             <property name="geometry">
              <rect>
-              <x>170</x>
-              <y>80</y>
+              <x>150</x>
+              <y>90</y>
               <width>51</width>
-              <height>41</height>
+              <height>61</height>
              </rect>
             </property>
             <property name="focusPolicy">
@@ -221,10 +221,10 @@ WebSocket</string>
           <widget class="QPushButton" name="quit_button">
            <property name="geometry">
             <rect>
-             <x>40</x>
-             <y>790</y>
+             <x>10</x>
+             <y>810</y>
              <width>131</width>
-             <height>25</height>
+             <height>41</height>
             </rect>
            </property>
            <property name="sizePolicy">
@@ -347,10 +347,10 @@ WebSocket</string>
           <widget class="QGroupBox" name="groupBox_2">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>260</y>
-             <width>231</width>
-             <height>111</height>
+             <x>20</x>
+             <y>320</y>
+             <width>211</width>
+             <height>131</height>
             </rect>
            </property>
            <property name="font">
@@ -366,8 +366,8 @@ WebSocket</string>
              <rect>
               <x>10</x>
               <y>30</y>
-              <width>151</width>
-              <height>31</height>
+              <width>131</width>
+              <height>41</height>
              </rect>
             </property>
             <property name="font">
@@ -389,9 +389,9 @@ WebSocket</string>
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>70</y>
-              <width>151</width>
-              <height>31</height>
+              <y>80</y>
+              <width>131</width>
+              <height>41</height>
              </rect>
             </property>
             <property name="font">
@@ -412,10 +412,10 @@ WebSocket</string>
            <widget class="QPushButton" name="rtsp_off_button">
             <property name="geometry">
              <rect>
-              <x>170</x>
+              <x>150</x>
               <y>30</y>
               <width>51</width>
-              <height>31</height>
+              <height>41</height>
              </rect>
             </property>
             <property name="focusPolicy">
@@ -431,10 +431,10 @@ WebSocket</string>
            <widget class="QPushButton" name="joy_off_button">
             <property name="geometry">
              <rect>
-              <x>170</x>
-              <y>70</y>
+              <x>150</x>
+              <y>80</y>
               <width>51</width>
-              <height>31</height>
+              <height>41</height>
              </rect>
             </property>
             <property name="focusPolicy">

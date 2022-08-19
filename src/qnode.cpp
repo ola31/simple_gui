@@ -90,7 +90,7 @@ bool QNode::init() {
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         */
         Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
-        Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
+        Gripper_Image_subscriber = n.subscribe("/slam_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Arm
 /*
         nuc2_status_subscriber = n.subscribe("/getmission_arm_ready",100,&QNode::nuc_status_Callback, this);
@@ -139,7 +139,7 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         */
         Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
-        Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
+        Gripper_Image_subscriber = n.subscribe("/slam_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Arm
 
         //nuc2_status_subscriber = n.subscribe("/getmission_arm_ready",100,&QNode::nuc_status_Callback, this);
@@ -175,7 +175,7 @@ void QNode::run() {
         JOY_state_subscriber = n.subscribe("rosjoy_status", 1000, &QNode::JOY_state_Callback, this);
         */
         Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
-        Gripper_Image_subscriber = n.subscribe("/realsence_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
+        Gripper_Image_subscriber = n.subscribe("/slam_cam/image_raw",1000,&QNode::Gripper_ImageCb, this);
         //Front_Image_subscriber2 = it.subscribe("/image_raw/compressed",1000,&QNode::Front_ImageCb,image_transport::TransportHints("compressed"),this);
 
         //Arm
@@ -315,8 +315,8 @@ void QNode::Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConst
    //cv::cvtColor(frame3, frame4, cv::COLOR_RGB2BGR);
    //cv::cvShowImage("Received Image", &frame);
    //cv::imshow("aaaa",frame);
-   int WIDTH = 320*(1.8);
-   int HEIGHT = 180*(1.8);
+   int WIDTH = 320*(1.5);
+   int HEIGHT = 240*(1.5);
    qt_image_gripper = QImage((const unsigned char*)(frame2.data),frame2.cols,frame2.rows,QImage::Format_RGB888).scaled(WIDTH,HEIGHT,Qt::KeepAspectRatio, Qt::SmoothTransformation);
   //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
    Q_EMIT statusUpdated();

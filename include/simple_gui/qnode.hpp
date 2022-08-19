@@ -66,7 +66,8 @@ public:
         void getready_Callback(const std_msgs::UInt16& ready);
 
         void Front_ImageCb(const sensor_msgs::ImageConstPtr& msg);
-        void Gripper_ImageCb(const sensor_msgs::ImageConstPtr& msg);
+        void Top_ImageCb(const sensor_msgs::ImageConstPtr& msg);
+        void Tpf_ImageCb(const sensor_msgs::ImageConstPtr& msg);
 
         //Arm
         /*
@@ -119,7 +120,8 @@ private:
         ros::Subscriber JOY_state_subscriber;
         */
         ros::Subscriber Front_Image_subscriber;
-        ros::Subscriber Gripper_Image_subscriber;
+        ros::Subscriber Top_Image_subscriber;
+        ros::Subscriber Tpf_Image_subscriber;
         //image_transport::Subscriber Front_Image_subscriber2;
 
       //  ros::Subscriber nuc2_status_subscriber;

@@ -31,7 +31,8 @@ extern int State[8];
 //extern int Arm_State[5];
 extern int Ready;
 extern QImage qt_image;
-extern QImage qt_image_gripper;
+extern QImage qt_image_top;
+extern QImage qt_image_tpf;
 
 using namespace Qt;
 //using namespace Ui;
@@ -345,8 +346,11 @@ void MainWindow::updateState() {
     ui.label_7->setPixmap(QPixmap::fromImage(qt_image));
     ui.label_7->resize(ui.label_7->pixmap()->size());
 
-    ui.label_9->setPixmap(QPixmap::fromImage(qt_image_gripper));
+    ui.label_9->setPixmap(QPixmap::fromImage(qt_image_top));
     ui.label_9->resize(ui.label_9->pixmap()->size());
+
+    ui.label_11->setPixmap(QPixmap::fromImage(qt_image_tpf));
+    ui.label_11->resize(ui.label_11->pixmap()->size());
 
 }
 

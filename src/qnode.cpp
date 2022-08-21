@@ -33,6 +33,8 @@ namespace simple_gui {
 *****************************************************************************/
 
 int State[8];
+bool new_button_State[3];
+int new_button_State_count[3];
 //int Arm_State[5];
 int Ready;
 QImage qt_image;
@@ -42,6 +44,7 @@ QImage qt_image_tpf;
 
 extern bool slam_map_is_off = false;
 extern bool reload_ = false;
+extern bool closehtml_ = false;
 
 extern int ros_topic_data;
 extern bool ros_status_flag;
@@ -82,6 +85,8 @@ bool QNode::init() {
         command_publisher = n.advertise<std_msgs::String>("gui_terminal_command", 1);
 
         Reload_publisher = n.advertise<std_msgs::Bool>("/html_reload", 1);
+        Html_close_publisher = n.advertise<std_msgs::Bool>("/html_close", 1);
+
         Slam_map_is_on_publisher = n.advertise<std_msgs::Bool>("/slam_image_is_off", 1);
 
 
@@ -99,6 +104,8 @@ bool QNode::init() {
         Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
         Top_Image_subscriber = n.subscribe("/topCamera_1/image",1000,&QNode::Top_ImageCb, this);
         Tpf_Image_subscriber = n.subscribe("/tpfCamera_1/image",1000,&QNode::Tpf_ImageCb, this);
+
+        html_is_on_subscriber = n.subscribe("/html_is_on",500,&QNode::html_is_on_Cb, this);
 
 
         //Arm
@@ -135,6 +142,7 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         command_publisher = n.advertise<std_msgs::String>("gui_terminal_command", 1);
 
         Reload_publisher = n.advertise<std_msgs::Bool>("/html_reload", 1);
+        Html_close_publisher = n.advertise<std_msgs::Bool>("/html_close", 1);
         Slam_map_is_on_publisher = n.advertise<std_msgs::Bool>("/slam_image_is_off", 1);
 
 
@@ -154,6 +162,8 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
         Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
         Top_Image_subscriber = n.subscribe("/topCamera_1/image",1000,&QNode::Top_ImageCb, this);
         Tpf_Image_subscriber = n.subscribe("/tpfCamera_1/image",1000,&QNode::Tpf_ImageCb, this);
+
+        html_is_on_subscriber = n.subscribe("/html_is_on",500,&QNode::html_is_on_Cb, this);
 
         //Arm
 
@@ -193,6 +203,8 @@ void QNode::run() {
         Top_Image_subscriber = n.subscribe("/topCamera_1/image",1000,&QNode::Top_ImageCb, this);
         Tpf_Image_subscriber = n.subscribe("/tpfCamera_1/image",1000,&QNode::Tpf_ImageCb, this);
 
+        html_is_on_subscriber = n.subscribe("/html_is_on",500,&QNode::html_is_on_Cb, this);
+
         //Front_Image_subscriber2 = it.subscribe("/image_raw/compressed",1000,&QNode::Front_ImageCb,image_transport::TransportHints("compressed"),this);
 
         //Arm
@@ -213,7 +225,10 @@ void QNode::run() {
   //int count = 0;
 
         std_msgs::Bool reload_msg;
-        reload_msg.data = true;
+        reload_msg.data = false;
+
+        std_msgs::Bool close_msg;
+        close_msg.data = false;
 
         std_msgs::Bool slam_image_is_off_msg;
         slam_image_is_off_msg.data = slam_map_is_off;
@@ -223,8 +238,11 @@ void QNode::run() {
                 msg.data = ros_topic_data;
                 //mission_publisher.publish(msg);
                 reload_msg.data = reload_;
+                close_msg.data = closehtml_;
                 Reload_publisher.publish(reload_msg);
+                Html_close_publisher.publish(close_msg);
                 reload_ = false;
+                closehtml_ = false;
 
                 slam_image_is_off_msg.data = slam_map_is_off;
                 Slam_map_is_on_publisher.publish(slam_image_is_off_msg);
@@ -237,6 +255,7 @@ void QNode::run() {
               //ros_status_flag_cmd = false;
 
             }
+            blackout_count();
             blackout(0);
 
             ros::spinOnce();
@@ -288,8 +307,10 @@ void QNode::JOY_state_Callback(const std_msgs::UInt16& state_msg){
 */
 void QNode::blackout(int a){
 
-    for(int i=0; i<8; i++) {
+    for(int i=0; i<3; i++) {
         State[i] = a;
+        if(new_button_State_count[i]>30) //about 1 sec
+          new_button_State[i] = false;
     }
     //for(int i=0;i<5;i++){
      // Arm_State[i] = a;
@@ -297,6 +318,13 @@ void QNode::blackout(int a){
     Ready = a;
 
     Q_EMIT statusUpdated();
+}
+
+void QNode::blackout_count(){
+
+    for(int i=0; i<3; i++) {
+        new_button_State_count[i]++;
+    }
 }
 
 void QNode::getready_Callback(const std_msgs::UInt16& ready){
@@ -377,6 +405,12 @@ void QNode::Tpf_ImageCb(const sensor_msgs::ImageConstPtr& msg){ //ImageConstPtr
   //qt_image = qt_image.scaled(600,500,Qt::KeepAspectRatio, Qt::SmoothTransformation);
    Q_EMIT statusUpdated();
 
+}
+
+void QNode::html_is_on_Cb(const std_msgs::Bool& msg){
+  new_button_State[0]=true;
+  new_button_State_count[0]=0; //msg.data;
+  Q_EMIT statusUpdated();
 }
 
 /*

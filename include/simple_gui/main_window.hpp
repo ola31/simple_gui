@@ -116,6 +116,7 @@ public Q_SLOTS:
     void RTSP_off();
     void JOY_off();
     void Reload();
+    void Html_off();
     void slam_map_onoff(int);
 
     //void NUC1_screenshot_clicked(bool checked);

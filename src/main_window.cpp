@@ -28,10 +28,12 @@ bool ros_status_flag_cmd = 0;
 QString q_command_string;
 
 extern int State[8];
+extern bool new_button_State[3];
 //extern int Arm_State[5];
 extern int Ready;
 extern bool slam_map_is_off;
 extern bool reload_;
+extern bool closehtml_;
 extern QImage qt_image;
 extern QImage qt_image_top;
 extern QImage qt_image_tpf;
@@ -136,6 +138,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_Edit_html, SIGNAL(clicked()), this, SLOT(Edit_html()));
     QObject::connect(ui.web_off_button, SIGNAL(clicked()), this, SLOT(Web_off()));
     QObject::connect(ui.Button_Reload, SIGNAL(clicked()), this, SLOT(Reload()));
+    QObject::connect(ui.Button_html_off, SIGNAL(clicked()), this, SLOT(Html_off()));
     QObject::connect(ui.checkbox_slam_map_is_off, SIGNAL(stateChanged(int)), this, SLOT(slam_map_onoff(int)));
 
     //Teleoperation
@@ -347,6 +350,13 @@ void MainWindow::updateState() {
 
 */
 
+  if(new_button_State[0] == true){
+      ui.Button_html->setStyleSheet("color: rgb(252, 175, 62); border-color: rgb(252, 175, 62); border: 4px solid rgb(252, 175, 62); border-radius: 5px;");
+  }
+  else{
+    ui.Button_html->setStyleSheet(" ");
+  }
+
     ui.label_7->setPixmap(QPixmap::fromImage(qt_image));
     ui.label_7->resize(ui.label_7->pixmap()->size());
 
@@ -497,6 +507,8 @@ void MainWindow::Html()
   std::string command_html = "firefox ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
   const char *c_html = command_html.c_str();
   system(c_html);
+  ui.Button_html->setStyleSheet("border-color: rgb(252, 175, 62); border: 2px solid rgb(252, 175, 62); border-radius: 5px;");
+  //ui.Button_html->setStyleSheet(" ");
 }
 void MainWindow::controll_pc_websocket()
 {
@@ -549,6 +561,11 @@ void MainWindow::JOY_off()
 
 void MainWindow::Reload() {
     reload_ = true;
+    ros_status_flag = true;
+}
+
+void MainWindow::Html_off(){
+    closehtml_ = true;
     ros_status_flag = true;
 }
 

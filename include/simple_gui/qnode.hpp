@@ -63,12 +63,14 @@ public:
         void JOY_state_Callback(const std_msgs::UInt16& state_msg);
         */
         void blackout(int a);
+        void blackout_count();
         void getready_Callback(const std_msgs::UInt16& ready);
 
         void Front_ImageCb(const sensor_msgs::ImageConstPtr& msg);
         void Top_ImageCb(const sensor_msgs::ImageConstPtr& msg);
         void Tpf_ImageCb(const sensor_msgs::ImageConstPtr& msg);
 
+        void html_is_on_Cb(const std_msgs::Bool& msg);
         //Arm
         /*
         void nuc_status_Callback(const std_msgs::Bool& state_msg);
@@ -110,6 +112,7 @@ private:
         ros::Publisher command_publisher;
         ros::Publisher Reload_publisher;
         ros::Publisher Slam_map_is_on_publisher;
+        ros::Publisher Html_close_publisher;
 
         ros::Subscriber get_Ready_subscriber;
 /*
@@ -126,6 +129,7 @@ private:
         ros::Subscriber Tpf_Image_subscriber;
 
         ros::Subscriber Reload_subscriber;
+        ros::Subscriber html_is_on_subscriber;
         //image_transport::Subscriber Front_Image_subscriber2;
 
       //  ros::Subscriber nuc2_status_subscriber;

@@ -135,7 +135,7 @@
              <rect>
               <x>10</x>
               <y>30</y>
-              <width>111</width>
+              <width>101</width>
               <height>41</height>
              </rect>
             </property>
@@ -145,7 +145,7 @@
              </font>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true"/>
@@ -176,7 +176,7 @@
             </property>
             <property name="text">
              <string>Controll_pc
-WebSocket</string>
+Web</string>
             </property>
            </widget>
            <widget class="QPushButton" name="Button_Edit_html">
@@ -222,7 +222,7 @@ WebSocket</string>
              <rect>
               <x>10</x>
               <y>80</y>
-              <width>81</width>
+              <width>151</width>
               <height>21</height>
              </rect>
             </property>
@@ -230,17 +230,17 @@ WebSocket</string>
              <string>Reload</string>
             </property>
            </widget>
-           <widget class="QLabel" name="label_2">
+           <widget class="QPushButton" name="Button_html_off">
             <property name="geometry">
              <rect>
-              <x>130</x>
+              <x>120</x>
               <y>30</y>
-              <width>31</width>
+              <width>41</width>
               <height>41</height>
              </rect>
             </property>
             <property name="text">
-             <string>TextLabel</string>
+             <string>OFF</string>
             </property>
            </widget>
           </widget>

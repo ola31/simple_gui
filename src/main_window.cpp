@@ -30,6 +30,8 @@ QString q_command_string;
 extern int State[8];
 //extern int Arm_State[5];
 extern int Ready;
+extern bool slam_map_is_off;
+extern bool reload_;
 extern QImage qt_image;
 extern QImage qt_image_top;
 extern QImage qt_image_tpf;
@@ -133,6 +135,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(ui.Button_controll_pc_websocket, SIGNAL(clicked()), this, SLOT(controll_pc_websocket()));
     QObject::connect(ui.Button_Edit_html, SIGNAL(clicked()), this, SLOT(Edit_html()));
     QObject::connect(ui.web_off_button, SIGNAL(clicked()), this, SLOT(Web_off()));
+    QObject::connect(ui.Button_Reload, SIGNAL(clicked()), this, SLOT(Reload()));
+    QObject::connect(ui.checkbox_slam_map_is_off, SIGNAL(stateChanged(int)), this, SLOT(slam_map_onoff(int)));
 
     //Teleoperation
     QObject::connect(ui.rtsp_client_button, SIGNAL(clicked()), this, SLOT(RTSP()));
@@ -489,7 +493,8 @@ void MainWindow::Arm_teleopkey_topicpub()
 void MainWindow::Html()
 {
   //ROS_INFO("Html");
-  std::string command_html = "gnome-terminal -- firefox ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
+  //std::string command_html = "gnome-terminal -- firefox ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
+  std::string command_html = "firefox ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
   const char *c_html = command_html.c_str();
   system(c_html);
 }
@@ -541,6 +546,21 @@ void MainWindow::JOY_off()
   const char *c_edit = command_edit.c_str();
   system(c_edit);
 }
+
+void MainWindow::Reload() {
+    reload_ = true;
+    ros_status_flag = true;
+}
+
+void MainWindow::slam_map_onoff(int arg1) {
+    if(arg1 == 0) //unchecked
+      slam_map_is_off = false;
+    else if(arg1 == 2) //checked
+      slam_map_is_off = true;
+    ros_status_flag = true;
+}
+
+
 //Screenshot
 /*
 void MainWindow::NUC1_screenshot_clicked(bool checked)
@@ -717,4 +737,5 @@ void MainWindow::closeEvent(QCloseEvent *event)
 }
 
 }  // namespace launchgui
+
 

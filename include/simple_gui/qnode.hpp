@@ -108,6 +108,8 @@ private:
 	char** init_argv;
         ros::Publisher mission_publisher;
         ros::Publisher command_publisher;
+        ros::Publisher Reload_publisher;
+        ros::Publisher Slam_map_is_on_publisher;
 
         ros::Subscriber get_Ready_subscriber;
 /*
@@ -122,6 +124,8 @@ private:
         ros::Subscriber Front_Image_subscriber;
         ros::Subscriber Top_Image_subscriber;
         ros::Subscriber Tpf_Image_subscriber;
+
+        ros::Subscriber Reload_subscriber;
         //image_transport::Subscriber Front_Image_subscriber2;
 
       //  ros::Subscriber nuc2_status_subscriber;

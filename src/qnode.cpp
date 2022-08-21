@@ -40,6 +40,9 @@ QImage qt_image_top;
 QImage qt_image_tpf;
 //QImage qt_image_screenshot; //add
 
+extern bool slam_map_is_off = false;
+extern bool reload_ = false;
+
 extern int ros_topic_data;
 extern bool ros_status_flag;
 extern bool ros_status_flag_cmd;
@@ -78,6 +81,9 @@ bool QNode::init() {
         mission_publisher = n.advertise<std_msgs::UInt16>("mission", 1);
         command_publisher = n.advertise<std_msgs::String>("gui_terminal_command", 1);
 
+        Reload_publisher = n.advertise<std_msgs::Bool>("/html_reload", 1);
+        Slam_map_is_on_publisher = n.advertise<std_msgs::Bool>("/slam_image_is_off", 1);
+
 
         get_Ready_subscriber = n.subscribe("getmission_ready", 1000, &QNode::getready_Callback, this);
 
@@ -93,6 +99,7 @@ bool QNode::init() {
         Front_Image_subscriber = n.subscribe("/usb_cam_1/image_raw",1000,&QNode::Front_ImageCb, this);
         Top_Image_subscriber = n.subscribe("/topCamera_1/image",1000,&QNode::Top_ImageCb, this);
         Tpf_Image_subscriber = n.subscribe("/tpfCamera_1/image",1000,&QNode::Tpf_ImageCb, this);
+
 
         //Arm
 /*
@@ -126,6 +133,9 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 	// Add your ros communications here.
         mission_publisher = n.advertise<std_msgs::UInt16>("mission", 1);
         command_publisher = n.advertise<std_msgs::String>("gui_terminal_command", 1);
+
+        Reload_publisher = n.advertise<std_msgs::Bool>("/html_reload", 1);
+        Slam_map_is_on_publisher = n.advertise<std_msgs::Bool>("/slam_image_is_off", 1);
 
 
         get_Ready_subscriber = n.subscribe("getmission_ready", 1000, &QNode::getready_Callback, this);
@@ -201,16 +211,30 @@ void QNode::run() {
 
 
   //int count = 0;
+
+        std_msgs::Bool reload_msg;
+        reload_msg.data = true;
+
+        std_msgs::Bool slam_image_is_off_msg;
+        slam_image_is_off_msg.data = slam_map_is_off;
+
         while ( ros::ok() ) {
             if(ros_status_flag == true) {
                 msg.data = ros_topic_data;
-                mission_publisher.publish(msg);
+                //mission_publisher.publish(msg);
+                reload_msg.data = reload_;
+                Reload_publisher.publish(reload_msg);
+                reload_ = false;
+
+                slam_image_is_off_msg.data = slam_map_is_off;
+                Slam_map_is_on_publisher.publish(slam_image_is_off_msg);
+
                 ros_status_flag = false;
             }
             if(ros_status_flag_cmd == true){
-              cmd_msg.data = q_command_string.toStdString();
-              command_publisher.publish(cmd_msg);
-              ros_status_flag_cmd = false;
+              //cmd_msg.data = q_command_string.toStdString();
+              //command_publisher.publish(cmd_msg);
+              //ros_status_flag_cmd = false;
 
             }
             blackout(0);

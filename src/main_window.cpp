@@ -171,14 +171,14 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
    m_readyimg[0].load(":/images/switch2.jpg");
    m_readyimg[1].load(":/images/switch1.jpg");
 
-   KUDOS_img.load(":/images/KUDOS2.png");
+   //KUDOS_img.load(":/images/KUDOS2.png");
 
 
-   cat1_img.load(":/images/cat1.jpg");
-   cat2_img.load(":/images/cat2.jpg");
+   //cat1_img.load(":/images/cat1.jpg");
+   //cat2_img.load(":/images/cat2.jpg");
 
-   ui.label_7->setPixmap(cat1_img);
-   ui.label_9->setPixmap(cat2_img);
+   //ui.label_7->setPixmap(cat1_img);
+   //ui.label_9->setPixmap(cat2_img);
    //ui.label_11->setPixmap(KUDOS_img);
 
    qnode.init(); //ola

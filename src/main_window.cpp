@@ -61,7 +61,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 
     ReadSettings();
 	setWindowIcon(QIcon(":/images/icon.png"));
-	ui.tab_manager->setCurrentIndex(0); // ensure the first tab is showing - qt-designer should have this already hardwired, but often loses it (settings?).
+  //ui.tab_manager->setCurrentIndex(0); // ensure the first tab is showing - qt-designer should have this already hardwired, but often loses it (settings?).
     QObject::connect(&qnode, SIGNAL(rosShutdown()), this, SLOT(close()));
 
 	/*********************
@@ -504,7 +504,7 @@ void MainWindow::Html()
 {
   //ROS_INFO("Html");
   //std::string command_html = "gnome-terminal -- firefox ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
-  std::string command_html = "firefox ~/catkin_ws_ola/src/roslibjs/examples/simple_gui.html";
+  std::string command_html = "firefox ~/catkin_ws/src/roslibjs/examples/rclab_umpc.html";
   const char *c_html = command_html.c_str();
   system(c_html);
   ui.Button_html->setStyleSheet("border-color: rgb(252, 175, 62); border: 2px solid rgb(252, 175, 62); border-radius: 5px;");

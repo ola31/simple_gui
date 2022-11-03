@@ -1,7 +1,4 @@
 <launch>
     <node pkg="simple_gui" type="simple_gui" name="simple_gui" output="screen"/>
     <node pkg="image_transport" type="republish" name="republish" args="compressed in:=/usb_cam/image_raw out:=/usb_cam_1/image_raw"/>
-    <node pkg="image_transport" type="republish" name="republish2" args="compressed in:=/topCamera/image out:=/topCamera_1/image"/>
-    <node pkg="image_transport" type="republish" name="republish3" args="compressed in:=/tpfCamera/image out:=/tpfCamera_1/image"/>
-    <!--<node pkg="image_transport" type="republish" name="republish_realsence" args="compressed in:=/realsence/image_raw out:=/realsence_cam/image_raw"/>-->
 </launch>
